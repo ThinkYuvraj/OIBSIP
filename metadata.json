@@ -1,0 +1,6 @@
+{
+  "name": "Slice & Fire Pizza Delivery",
+  "description": "Artisan wood-fired pizza ordering application featuring customizable pizzas, artisan menu, interactive cart, and responsive order flow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
