@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { X, ShieldCheck, CreditCard, Smartphone, Building2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { api } from '../api/client.js';
 import type { Order } from '../types.js';
+import { useTheme } from '../context/ThemeContext.js';
 
 interface RazorpayModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
   onClose,
   onPaymentSuccess,
 }) => {
+  const { isDark } = useTheme();
   const [method, setMethod] = useState<'card' | 'upi' | 'netbanking'>('card');
   const [loading, setLoading] = useState(false);
   const [statusMsg, setStatusMsg] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
@@ -91,11 +93,12 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
         style={{
           width: '100%',
           maxWidth: 460,
-          background: '#ffffff',
+          background: isDark ? '#191513' : '#ffffff',
+          color: isDark ? '#f5f2ee' : '#1e293b',
           borderRadius: 16,
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.45)',
           overflow: 'hidden',
-          border: '1px solid #c7d2fe',
+          border: isDark ? '1px solid #332822' : '1px solid #c7d2fe',
         }}
       >
         {/* Razorpay Brand Header */}

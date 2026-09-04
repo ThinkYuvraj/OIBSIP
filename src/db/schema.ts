@@ -7,8 +7,10 @@ export const users = pgTable('users', {
   email: text('email').notNull(),
   name: text('name'),
   role: text('role').default('CUSTOMER').notNull(),
+  theme: text('theme').default('light').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
 
 // Inventory stock items table
 export const inventory = pgTable('inventory', {

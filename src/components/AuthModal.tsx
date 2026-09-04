@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { api } from '../api/client.js';
 import { useAuth } from '../context/AuthContext.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { X, Mail, Lock, User, KeyRound, CheckCircle, ArrowRight } from 'lucide-react';
 
 interface AuthModalProps {
@@ -11,6 +12,7 @@ interface AuthModalProps {
 
 export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, defaultTab = 'login' }) => {
   const { login } = useAuth();
+  const { isDark } = useTheme();
   const [tab, setTab] = useState<'login' | 'register' | 'verify' | 'forgot' | 'reset'>(defaultTab);
 
   // Form states
@@ -139,13 +141,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, defaultTa
       }}
     >
       <div
+        id="auth-modal-card"
         style={{
-          background: '#fffcfb',
+          background: isDark ? '#1a1614' : '#fffcfb',
+          color: isDark ? '#f5f2ee' : '#2b2725',
           borderRadius: 16,
           width: '100%',
           maxWidth: 440,
-          boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
-          border: '1px solid #e2ddd8',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+          border: isDark ? '1px solid #332822' : '1px solid #e2ddd8',
           overflow: 'hidden',
           position: 'relative',
         }}
@@ -157,7 +161,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, defaultTa
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '18px 24px',
-            borderBottom: '1px solid #eee8e4',
+            borderBottom: isDark ? '1px solid #2d241f' : '1px solid #eee8e4',
           }}
         >
           <div style={{ display: 'flex', gap: 16 }}>

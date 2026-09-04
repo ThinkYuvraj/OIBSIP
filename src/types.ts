@@ -6,8 +6,10 @@ export interface User {
   email: string;
   role: UserRole;
   isVerified: boolean;
+  theme?: 'light' | 'dark';
   createdAt?: string;
 }
+
 
 export type InventoryCategory = 'base' | 'sauce' | 'cheese' | 'vegetable';
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { AuthProvider, useAuth } from './context/AuthContext.js';
+import { ThemeProvider, useTheme } from './context/ThemeContext.js';
 import { Navbar } from './components/Navbar.js';
 import { PizzaCatalog } from './components/PizzaCatalog.js';
 import { CustomPizzaBuilder } from './components/CustomPizzaBuilder.js';
@@ -17,7 +18,17 @@ import { Flame, Pizza, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
 
 function MainApp() {
   const { user, isAdmin } = useAuth();
+  const { theme, setTheme, isDark } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('home');
+
+  // Sync user database theme preference when authenticated
+  useEffect(() => {
+    if (user?.theme && (user.theme === 'light' || user.theme === 'dark')) {
+      if (user.theme !== theme) {
+        setTheme(user.theme);
+      }
+    }
+  }, [user?.theme, theme, setTheme]);
 
   // Menu pizzas from API
   const [pizzas, setPizzas] = useState<ArtisanPizza[]>([]);
@@ -283,9 +294,9 @@ function MainApp() {
             <section
               style={{
                 padding: '24px 78px',
-                background: '#faf7f4',
-                borderTop: '1px solid #eee8e4',
-                borderBottom: '1px solid #eee8e4',
+                background: isDark ? '#181412' : '#faf7f4',
+                borderTop: isDark ? '1px solid #2d2521' : '1px solid #eee8e4',
+                borderBottom: isDark ? '1px solid #2d2521' : '1px solid #eee8e4',
               }}
             >
               <div
@@ -298,8 +309,8 @@ function MainApp() {
                 <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                   <div
                     style={{
-                      background: '#fee2e2',
-                      color: '#c92722',
+                      background: isDark ? '#3b1816' : '#fee2e2',
+                      color: isDark ? '#fca5a5' : '#c92722',
                       padding: 10,
                       borderRadius: 10,
                     }}
@@ -307,8 +318,8 @@ function MainApp() {
                     <Pizza size={20} />
                   </div>
                   <div>
-                    <b style={{ fontSize: 13, color: '#2b2725' }}>4-Step Custom Pie Builder</b>
-                    <p style={{ margin: '2px 0 0', fontSize: 11, color: '#736d68', lineHeight: 1.4 }}>
+                    <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>4-Step Custom Pie Builder</b>
+                    <p style={{ margin: '2px 0 0', fontSize: 11, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.4 }}>
                       Choose 5 bases, 5 sauces, 5 cheeses, and 10 farm-fresh vegetables with real-time stock validation.
                     </p>
                   </div>
@@ -317,8 +328,8 @@ function MainApp() {
                 <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                   <div
                     style={{
-                      background: '#e0f2fe',
-                      color: '#0284c7',
+                      background: isDark ? '#082f49' : '#e0f2fe',
+                      color: isDark ? '#38bdf8' : '#0284c7',
                       padding: 10,
                       borderRadius: 10,
                     }}
@@ -326,8 +337,8 @@ function MainApp() {
                     <Clock size={20} />
                   </div>
                   <div>
-                    <b style={{ fontSize: 13, color: '#2b2725' }}>Real-Time Kitchen Tracker</b>
-                    <p style={{ margin: '2px 0 0', fontSize: 11, color: '#736d68', lineHeight: 1.4 }}>
+                    <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>Real-Time Kitchen Tracker</b>
+                    <p style={{ margin: '2px 0 0', fontSize: 11, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.4 }}>
                       Live auto-syncing step progression: Order Received &rarr; In Kitchen &rarr; Sent to Delivery &rarr; Delivered.
                     </p>
                   </div>
@@ -336,8 +347,8 @@ function MainApp() {
                 <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                   <div
                     style={{
-                      background: '#fef3c7',
-                      color: '#ca8a04',
+                      background: isDark ? '#362b08' : '#fef3c7',
+                      color: isDark ? '#fde047' : '#ca8a04',
                       padding: 10,
                       borderRadius: 10,
                     }}
@@ -345,8 +356,8 @@ function MainApp() {
                     <ShieldCheck size={20} />
                   </div>
                   <div>
-                    <b style={{ fontSize: 13, color: '#2b2725' }}>Admin Inventory &amp; Cron Alerts</b>
-                    <p style={{ margin: '2px 0 0', fontSize: 11, color: '#736d68', lineHeight: 1.4 }}>
+                    <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>Admin Inventory &amp; Cron Alerts</b>
+                    <p style={{ margin: '2px 0 0', fontSize: 11, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.4 }}>
                       Separate Admin login, automatic inventory decrements, and scheduled node-cron low-stock email notifications.
                     </p>
                   </div>
@@ -588,8 +599,10 @@ function MainApp() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <MainApp />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <MainApp />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

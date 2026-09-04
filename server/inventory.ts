@@ -90,46 +90,73 @@ export async function checkInventoryThresholds(isManual = false): Promise<{
   const now = new Date().toISOString();
 
   if (lowStockItems.length > 0) {
-    const transporterInstance = await getTransporter();
+    const prevStats = db.getCronStats();
+    const lastAlertTime = prevStats.lastAlertSent ? new Date(prevStats.lastAlertSent).getTime() : 0;
+    const timeSinceLastAlert = Date.now() - lastAlertTime;
+    const COOLDOWN_MS = 20 * 60 * 1000; // 20 minutes cooldown between automated cron emails
 
-    for (const item of lowStockItems) {
-      const subject = `⚠️ URGENT: Low Stock Alert - ${item.name} (${item.stock} ${item.unit} remaining)`;
+    // Allow dispatch if manual trigger, or if cooldown expired
+    const shouldDispatchEmail = isManual || timeSinceLastAlert > COOLDOWN_MS;
+
+    if (shouldDispatchEmail) {
+      const transporterInstance = await getTransporter();
+      const { fromAddress } = getSenderInfo();
+
+      // Format a consolidated digest alert to avoid spamming multiple emails and hitting SMTP burst rate limits (421)
+      const isMulti = lowStockItems.length > 1;
+      const subject = isMulti
+        ? `⚠️ URGENT: Kitchen Stock Alert - ${lowStockItems.length} Ingredients Below Threshold`
+        : `⚠️ URGENT: Low Stock Alert - ${lowStockItems[0].name} (${lowStockItems[0].stock} ${lowStockItems[0].unit} left)`;
+
+      const rowsHtml = lowStockItems
+        .map(
+          (item) => `
+            <tr style="border-bottom: 1px solid #e5deda;">
+              <td style="padding: 10px 12px; font-weight: bold; color: #2b2523;">${item.name}</td>
+              <td style="padding: 10px 12px; text-transform: capitalize; color: #574e48;">${item.category}</td>
+              <td style="padding: 10px 12px; font-weight: bold; color: #c92722;">${item.stock} ${item.unit}</td>
+              <td style="padding: 10px 12px; color: #78716c;">${item.threshold} ${item.unit}</td>
+              <td style="padding: 10px 12px; color: #b45309; font-weight: 600;">Deficit: ${item.threshold - item.stock} ${item.unit}</td>
+            </tr>
+          `
+        )
+        .join('');
+
       const htmlBody = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0dbd7; border-radius: 8px; padding: 24px; background: #fffcfb;">
-          <div style="text-align: center; border-bottom: 2px solid #c92722; padding-bottom: 12px; margin-bottom: 20px;">
-            <h2 style="color: #c92722; margin: 0;">Slice & Fire Artisan Pizzeria</h2>
-            <p style="color: #6d6662; margin: 4px 0 0; font-size: 13px;">Automated Inventory Alert System</p>
+        <div style="font-family: Arial, sans-serif; max-width: 680px; margin: 0 auto; border: 1px solid #e0dbd7; border-radius: 10px; padding: 24px; background: #fffcfb;">
+          <div style="text-align: center; border-bottom: 2px solid #c92722; padding-bottom: 14px; margin-bottom: 20px;">
+            <h2 style="color: #c92722; margin: 0; font-size: 22px;">Slice & Fire Artisan Pizzeria</h2>
+            <p style="color: #6d6662; margin: 4px 0 0; font-size: 13px;">Automated Kitchen Inventory & Stock Monitor</p>
           </div>
-          <h3 style="color: #2b2523;">Stock Threshold Breach Detected</h3>
-          <p>This is an automated notification from the kitchen inventory monitor.</p>
-          <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-            <tr style="background: #f7f3f0; border-bottom: 1px solid #e5deda;">
-              <td style="padding: 10px; font-weight: bold;">Inventory Item</td>
-              <td style="padding: 10px;">${item.name}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #e5deda;">
-              <td style="padding: 10px; font-weight: bold;">Category</td>
-              <td style="padding: 10px; text-transform: capitalize;">${item.category}</td>
-            </tr>
-            <tr style="background: #f7f3f0; border-bottom: 1px solid #e5deda;">
-              <td style="padding: 10px; font-weight: bold; color: #c92722;">Current Stock</td>
-              <td style="padding: 10px; font-weight: bold; color: #c92722;">${item.stock} ${item.unit}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #e5deda;">
-              <td style="padding: 10px; font-weight: bold;">Configured Threshold</td>
-              <td style="padding: 10px;">${item.threshold} ${item.unit}</td>
-            </tr>
+          <h3 style="color: #2b2523; margin-top: 0;">
+            ${isMulti ? `${lowStockItems.length} Inventory Items Require Restocking` : `Stock Threshold Breach: ${lowStockItems[0].name}`}
+          </h3>
+          <p style="color: #4a4441; font-size: 14px; line-height: 1.5;">
+            The automated kitchen monitor detected one or more ingredients that have fallen to or below safe operational thresholds.
+          </p>
+          <table style="width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px;">
+            <thead>
+              <tr style="background: #f7f3f0; border-bottom: 2px solid #e5deda; text-align: left;">
+                <th style="padding: 10px 12px;">Ingredient</th>
+                <th style="padding: 10px 12px;">Category</th>
+                <th style="padding: 10px 12px; color: #c92722;">Current Stock</th>
+                <th style="padding: 10px 12px;">Threshold</th>
+                <th style="padding: 10px 12px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
           </table>
-          <p style="color: #4a4441; font-size: 13px;">
-            Action required: Please review upcoming shift requirements and place a supplier restock order immediately.
+          <p style="color: #4a4441; font-size: 13px; line-height: 1.5;">
+            <strong>Immediate Action:</strong> Please review evening shift reservations and initiate supplier replenishment.
           </p>
           <div style="margin-top: 24px; padding-top: 12px; border-top: 1px solid #e0dbd7; font-size: 11px; color: #8c8581;">
-            Generated on ${new Date().toLocaleString()} by Node-Cron Scheduler.
+            Generated on ${new Date().toLocaleString()} by Node-Cron Scheduler. Notice sent to ${ADMIN_EMAIL}.
           </div>
         </div>
       `;
 
-      const { fromAddress } = getSenderInfo();
       try {
         await transporterInstance.sendMail({
           from: fromAddress,
@@ -137,27 +164,39 @@ export async function checkInventoryThresholds(isManual = false): Promise<{
           subject,
           html: htmlBody,
         });
+        console.log(`[Inventory Monitor] Alert email delivered for ${lowStockItems.length} low-stock item(s) to ${ADMIN_EMAIL}`);
       } catch (err: any) {
-        console.warn(`[Inventory Cron] Notification email for ${item.name} could not be delivered via SMTP (${err.message}). Logged in admin audit records.`);
-        if (err.code === 'EAUTH' || (err.response && err.response.includes('535'))) {
-          // Switch to jsonTransport to prevent repeated authentication failures
+        const errMsg = err?.message || String(err);
+        const isRateLimit = errMsg.includes('421') || err?.response?.includes('421');
+        const isAuthError = err.code === 'EAUTH' || err?.response?.includes('535');
+
+        if (isRateLimit) {
+          console.warn(`[Inventory Monitor] Mail server temporary rate limit (421) received. Alert logged internally in operations audit records.`);
           transporter = nodemailer.createTransport({ jsonTransport: true });
+        } else if (isAuthError) {
+          console.warn(`[Inventory Monitor] SMTP authentication error (535). Alert logged internally in operations audit records.`);
+          transporter = nodemailer.createTransport({ jsonTransport: true });
+        } else {
+          console.warn(`[Inventory Monitor] Email delivery note: ${errMsg}. Logged in operations records.`);
         }
       }
 
-      // Log in DB for admin dashboard visibility
-      db.addEmailLog({
-        id: `alert-${Date.now()}-${item.id}`,
-        timestamp: now,
-        recipient: ADMIN_EMAIL,
-        subject,
-        body: `Low stock warning for ${item.name}: ${item.stock} ${item.unit} remaining (Threshold: ${item.threshold} ${item.unit})`,
-        triggeredByItem: item.name,
-        currentStock: item.stock,
-        threshold: item.threshold,
-      });
-
-      alertsSent++;
+      // Record logs for each item for admin dashboard visibility
+      for (const item of lowStockItems) {
+        db.addEmailLog({
+          id: `alert-${Date.now()}-${item.id}`,
+          timestamp: now,
+          recipient: ADMIN_EMAIL,
+          subject: `Low Stock Alert: ${item.name} (${item.stock} ${item.unit} left)`,
+          body: `Stock warning for ${item.name}: ${item.stock} ${item.unit} remaining (Threshold: ${item.threshold} ${item.unit})`,
+          triggeredByItem: item.name,
+          currentStock: item.stock,
+          threshold: item.threshold,
+        });
+        alertsSent++;
+      }
+    } else {
+      console.log(`[Inventory Monitor] ${lowStockItems.length} low-stock items detected. Alert throttled by cooldown (${Math.round(timeSinceLastAlert / 60000)}m since last notification).`);
     }
   }
 

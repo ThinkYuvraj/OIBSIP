@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, MapPin, Phone, Tag, Check, ShoppingBag, ShieldCheck, ArrowRight } from 'lucide-react';
 import type { CartItem, Order } from '../types.js';
 import { useAuth } from '../context/AuthContext.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { api } from '../api/client.js';
 
 interface OrderSummaryModalProps {
@@ -20,6 +21,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
   openAuthModal,
 }) => {
   const { user } = useAuth();
+  const { isDark } = useTheme();
 
   const [address, setAddress] = useState('742 Evergreen Terrace, Apt 4B, New York, NY 10001');
   const [phone, setPhone] = useState('(212) 555-0194');
@@ -103,15 +105,16 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
       <div
         id="order-summary-modal"
         style={{
-          background: '#fffcfb',
+          background: isDark ? '#191513' : '#fffcfb',
+          color: isDark ? '#f5f2ee' : '#2b2725',
           borderRadius: 16,
           width: '100%',
           maxWidth: 620,
           maxHeight: '90vh',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-          border: '1px solid #e0d9d4',
+          boxShadow: '0 25px 50px rgba(0,0,0,0.4)',
+          border: isDark ? '1px solid #332822' : '1px solid #e0d9d4',
           overflow: 'hidden',
         }}
       >
@@ -119,7 +122,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
         <div
           style={{
             padding: '18px 24px',
-            borderBottom: '1px solid #eee8e4',
+            borderBottom: isDark ? '1px solid #2d241f' : '1px solid #eee8e4',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -129,12 +132,14 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
             <span style={{ fontSize: 10, fontWeight: 700, color: '#c92722', textTransform: 'uppercase' }}>
               Final Review
             </span>
-            <h2 style={{ margin: '2px 0 0', fontSize: 18, color: '#2b2725' }}>Order Summary &amp; Delivery</h2>
+            <h2 style={{ margin: '2px 0 0', fontSize: 18, color: isDark ? '#f5f2ee' : '#2b2725' }}>
+              Order Summary &amp; Delivery
+            </h2>
           </div>
           <button
             onClick={onClose}
             id="order-summary-close"
-            style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#888' }}
+            style={{ border: 'none', background: 'none', cursor: 'pointer', color: isDark ? '#a8a09a' : '#888' }}
           >
             <X size={18} />
           </button>
@@ -158,13 +163,13 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
           )}
 
           {/* Delivery Details */}
-          <div style={{ background: '#fbf9f7', border: '1px solid #e7e2de', borderRadius: 12, padding: 16 }}>
-            <h3 style={{ margin: '0 0 12px', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ background: isDark ? '#221b17' : '#fbf9f7', border: isDark ? '1px solid #352b25' : '1px solid #e7e2de', borderRadius: 12, padding: 16 }}>
+            <h3 style={{ margin: '0 0 12px', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6, color: isDark ? '#f5f2ee' : '#2b2725' }}>
               <MapPin size={15} color="#c92722" /> Delivery Destination &amp; Contact
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
               <div>
-                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: '#666', marginBottom: 4 }}>
+                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: isDark ? '#a8a09a' : '#666', marginBottom: 4 }}>
                   Full Street Address
                 </label>
                 <input
@@ -177,14 +182,16 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                     width: '100%',
                     padding: '8px 12px',
                     borderRadius: 8,
-                    border: '1px solid #d8d1cc',
+                    border: isDark ? '1px solid #3d332c' : '1px solid #d8d1cc',
+                    background: isDark ? '#191412' : '#fff',
+                    color: isDark ? '#f5f2ee' : '#2b2725',
                     fontSize: 12,
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: '#666', marginBottom: 4 }}>
+                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: isDark ? '#a8a09a' : '#666', marginBottom: 4 }}>
                   Recipient Phone Number
                 </label>
                 <div style={{ position: 'relative' }}>
@@ -198,7 +205,9 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                       width: '100%',
                       padding: '8px 12px 8px 32px',
                       borderRadius: 8,
-                      border: '1px solid #d8d1cc',
+                      border: isDark ? '1px solid #3d332c' : '1px solid #d8d1cc',
+                      background: isDark ? '#191412' : '#fff',
+                      color: isDark ? '#f5f2ee' : '#2b2725',
                       fontSize: 12,
                     }}
                   />
@@ -348,10 +357,10 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
           </div>
 
           {/* Calculation Breakdown */}
-          <div style={{ borderTop: '1px solid #eee8e4', paddingTop: 12, fontSize: 12, color: '#574f4b' }}>
+          <div style={{ borderTop: isDark ? '1px solid #2d241f' : '1px solid #eee8e4', paddingTop: 12, fontSize: 12, color: isDark ? '#c4bcba' : '#574f4b' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
               <span>Subtotal</span>
-              <b>${subtotal.toFixed(2)}</b>
+              <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>${subtotal.toFixed(2)}</b>
             </div>
 
             {appliedCoupon && (
@@ -376,9 +385,9 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 paddingTop: 8,
-                borderTop: '1px solid #e0d9d4',
+                borderTop: isDark ? '1px solid #352b25' : '1px solid #e0d9d4',
                 fontSize: 16,
-                color: '#2b2725',
+                color: isDark ? '#f5f2ee' : '#2b2725',
               }}
             >
               <b>Total Payable</b>
@@ -391,8 +400,8 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
         <div
           style={{
             padding: '16px 24px',
-            borderTop: '1px solid #eee8e4',
-            background: '#faf7f5',
+            borderTop: isDark ? '1px solid #2d241f' : '1px solid #eee8e4',
+            background: isDark ? '#15110f' : '#faf7f5',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',

@@ -14,6 +14,8 @@ import { initSeedUsers, comparePassword, generateToken } from './server/auth.js'
 import { startInventoryCron } from './server/inventory.js';
 import { PORTS_CONFIG, logRbacEvent, ROLE_PERMISSIONS } from './server/rbac.js';
 import { db } from './server/db.js';
+import { getDbStatus } from './src/db/index.ts';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -189,6 +191,16 @@ async function startServer() {
       },
     });
   });
+
+  // Database Connection Diagnostics
+  clientApp.get('/api/db-status', (_req, res) => {
+    res.json({
+      status: 'ok',
+      db: getDbStatus(),
+      timestamp: new Date().toISOString(),
+    });
+  });
+
 
   // Client REST API Routes
   clientApp.use('/api/auth', authRoutes);

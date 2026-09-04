@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CartItem } from '../types.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 
 interface CartDrawerProps {
@@ -19,6 +20,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   onProceedToCheckout,
 }) => {
+  const { isDark } = useTheme();
   if (!isOpen) return null;
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -29,7 +31,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         position: 'fixed',
         inset: 0,
         zIndex: 1040,
-        background: 'rgba(20, 16, 14, 0.6)',
+        background: 'rgba(0, 0, 0, 0.65)',
         backdropFilter: 'blur(3px)',
         display: 'flex',
         justifyContent: 'flex-end',
@@ -40,19 +42,20 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         style={{
           width: '100%',
           maxWidth: 420,
-          background: '#fffcfb',
+          background: isDark ? '#191513' : '#fffcfb',
+          color: isDark ? '#f5f2ee' : '#2b2725',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '-10px 0 30px rgba(0,0,0,0.15)',
-          borderLeft: '1px solid #e0d9d4',
+          boxShadow: '-10px 0 30px rgba(0,0,0,0.3)',
+          borderLeft: isDark ? '1px solid #2d241f' : '1px solid #e0d9d4',
         }}
       >
         {/* Header */}
         <div
           style={{
             padding: '20px 24px',
-            borderBottom: '1px solid #eee8e4',
+            borderBottom: isDark ? '1px solid #2d241f' : '1px solid #eee8e4',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -60,14 +63,20 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <ShoppingBag size={18} color="#c92722" />
-            <h2 style={{ margin: 0, fontSize: 18, color: '#2b2725' }}>
+            <h2 style={{ margin: 0, fontSize: 18, color: isDark ? '#f5f2ee' : '#2b2725' }}>
               Your Oven Order ({cartItems.reduce((a, b) => a + b.quantity, 0)})
             </h2>
           </div>
           <button
             onClick={onClose}
             id="cart-close-btn"
-            style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#888' }}
+            style={{
+              border: 'none',
+              background: 'none',
+              cursor: 'pointer',
+              color: isDark ? '#a8a09a' : '#888',
+              padding: 4,
+            }}
           >
             <X size={18} />
           </button>
@@ -76,10 +85,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         {/* Item List */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '20px 24px' }}>
           {cartItems.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#888' }}>
-              <ShoppingBag size={36} color="#d6d3d1" style={{ margin: '0 auto 12px' }} />
+            <div style={{ textAlign: 'center', padding: '60px 20px', color: isDark ? '#8a827c' : '#888' }}>
+              <ShoppingBag size={36} color={isDark ? '#4a3f38' : '#d6d3d1'} style={{ margin: '0 auto 12px' }} />
               <p style={{ margin: 0, fontSize: 14 }}>Your cart is empty.</p>
-              <small style={{ color: '#aaa' }}>Explore our artisan menu or craft a custom pie.</small>
+              <small style={{ color: isDark ? '#6b615a' : '#aaa' }}>Explore our artisan menu or craft a custom pie.</small>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -90,8 +99,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   style={{
                     padding: 14,
                     borderRadius: 12,
-                    background: '#ffffff',
-                    border: '1px solid #ebe5e1',
+                    background: isDark ? '#221b18' : '#ffffff',
+                    border: isDark ? '1px solid #332822' : '1px solid #ebe5e1',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 8,
@@ -109,7 +118,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           borderRadius: 8,
                           objectFit: 'cover',
                           flexShrink: 0,
-                          border: '1px solid #ebe5e1',
+                          border: isDark ? '1px solid #382e28' : '1px solid #ebe5e1',
                         }}
                       />
                     ) : (
@@ -132,13 +141,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     )}
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <b style={{ fontSize: 14, color: '#2b2725', wordBreak: 'break-word' }}>{item.name}</b>
+                        <b style={{ fontSize: 14, color: isDark ? '#f5f2ee' : '#2b2725', wordBreak: 'break-word' }}>
+                          {item.name}
+                        </b>
                         <b style={{ fontSize: 14, color: '#c92722', whiteSpace: 'nowrap', marginLeft: 8 }}>
                           ${(item.price * item.quantity).toFixed(2)}
                         </b>
                       </div>
                       {item.description && (
-                        <p style={{ margin: '2px 0 0', fontSize: 11, color: '#736d68', lineHeight: 1.3 }}>
+                        <p style={{ margin: '2px 0 0', fontSize: 11, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.3 }}>
                           {item.description}
                         </p>
                       )}
@@ -153,8 +164,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           width: 24,
                           height: 24,
                           borderRadius: 6,
-                          border: '1px solid #dcd5cf',
-                          background: '#fff',
+                          border: isDark ? '1px solid #3d332c' : '1px solid #dcd5cf',
+                          background: isDark ? '#2d241f' : '#fff',
+                          color: isDark ? '#f5f2ee' : '#2b2725',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -172,8 +184,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           width: 24,
                           height: 24,
                           borderRadius: 6,
-                          border: '1px solid #dcd5cf',
-                          background: '#fff',
+                          border: isDark ? '1px solid #3d332c' : '1px solid #dcd5cf',
+                          background: isDark ? '#2d241f' : '#fff',
+                          color: isDark ? '#f5f2ee' : '#2b2725',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -189,7 +202,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       style={{
                         background: 'none',
                         border: 'none',
-                        color: '#a8a29e',
+                        color: isDark ? '#8c837e' : '#a8a29e',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -212,13 +225,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <div
             style={{
               padding: '20px 24px',
-              borderTop: '1px solid #eee8e4',
-              background: '#faf8f6',
+              borderTop: isDark ? '1px solid #2d241f' : '1px solid #eee8e4',
+              background: isDark ? '#15110f' : '#faf8f6',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 14 }}>
-              <span style={{ fontSize: 13, color: '#736d68' }}>Estimated Subtotal</span>
-              <b style={{ fontSize: 20, color: '#2b2725' }}>${total.toFixed(2)}</b>
+              <span style={{ fontSize: 13, color: isDark ? '#a8a09a' : '#736d68' }}>Estimated Subtotal</span>
+              <b style={{ fontSize: 20, color: isDark ? '#f5f2ee' : '#2b2725' }}>${total.toFixed(2)}</b>
             </div>
 
             <button

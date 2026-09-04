@@ -6,17 +6,39 @@ import { deductInventoryForOrder } from '../inventory.js';
 
 const router = Router();
 
-const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || 'rzp_test_SliceAndFire2026';
-const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || 'secret_test_FireSliceNeapolitan900';
+const RAZORPAY_KEY_ID = (process.env.RAZORPAY_KEY_ID || 'rzp_test_SliceAndFire2026').trim();
+const RAZORPAY_KEY_SECRET = (process.env.RAZORPAY_KEY_SECRET || 'secret_test_FireSliceNeapolitan900').trim();
+
+function isPlaceholderRazorpayKey(keyId: string, keySecret: string): boolean {
+  const lowerId = keyId.toLowerCase();
+  const lowerSec = keySecret.toLowerCase();
+  return (
+    lowerId.includes('placeholder') ||
+    lowerId.includes('your_') ||
+    lowerId.includes('example') ||
+    lowerId === 'rzp_test_sliceandfire2026' ||
+    lowerSec.includes('placeholder') ||
+    lowerSec.includes('your_') ||
+    lowerSec.includes('example') ||
+    lowerSec === 'secret_test_firesliceneapolitan900'
+  );
+}
+
+const isLiveConfigured = !isPlaceholderRazorpayKey(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET);
 
 let razorpayInstance: Razorpay | null = null;
-try {
-  razorpayInstance = new Razorpay({
-    key_id: RAZORPAY_KEY_ID,
-    key_secret: RAZORPAY_KEY_SECRET,
-  });
-} catch (err) {
-  console.warn('[Razorpay] Initialized with test simulation mode:', err);
+if (isLiveConfigured) {
+  try {
+    razorpayInstance = new Razorpay({
+      key_id: RAZORPAY_KEY_ID,
+      key_secret: RAZORPAY_KEY_SECRET,
+    });
+    console.log('[Razorpay] Initialized with custom credentials');
+  } catch (err: any) {
+    console.warn('[Razorpay] Initialized in sandbox test simulation mode:', err.message);
+  }
+} else {
+  console.log('[Razorpay] Running in simulated sandbox test mode (ready for test checkout)');
 }
 
 // 1. Create Razorpay Payment Order
@@ -41,7 +63,7 @@ router.post('/create-order', async (req: Request, res: Response) => {
 
     let razorpayOrderId = `order_test_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
 
-    if (razorpayInstance && process.env.RAZORPAY_KEY_ID) {
+    if (razorpayInstance && isLiveConfigured) {
       try {
         const rzpOrder = await razorpayInstance.orders.create({
           amount: amountInSubunits,
@@ -53,8 +75,9 @@ router.post('/create-order', async (req: Request, res: Response) => {
           },
         });
         razorpayOrderId = rzpOrder.id;
-      } catch (e) {
-        console.warn('[Razorpay] Live SDK call fallback to simulated order ID:', e);
+      } catch (e: any) {
+        const errMsg = e?.error?.description || e?.message || 'Authentication error';
+        console.warn(`[Razorpay] Live SDK note: ${errMsg}. Using simulated test mode order ID.`);
       }
     }
 

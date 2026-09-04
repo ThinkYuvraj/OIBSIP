@@ -33,6 +33,7 @@ import {
   CheckCircle2,
   XCircle,
   RefreshCw,
+  Database,
 } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
@@ -42,6 +43,8 @@ export const AdminDashboard: React.FC = () => {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [emailLogs, setEmailLogs] = useState<AdminEmailLog[]>([]);
   const [cronStats, setCronStats] = useState<CronStats | null>(null);
+  const [dbStatus, setDbStatus] = useState<any>(null);
+
 
   // RBAC & Ports state
   const [rbacLogs, setRbacLogs] = useState<RbacAuditLog[]>([]);
@@ -70,7 +73,7 @@ export const AdminDashboard: React.FC = () => {
   const loadAllData = async () => {
     try {
       setLoading(true);
-      const [statsRes, invRes, ordersRes, alertsRes, portsRes, matrixRes, logsRes] = await Promise.all([
+      const [statsRes, invRes, ordersRes, alertsRes, portsRes, matrixRes, logsRes, dbRes] = await Promise.all([
         api.getAdminStats(),
         api.getAdminInventory(),
         api.getAdminOrders(),
@@ -78,6 +81,7 @@ export const AdminDashboard: React.FC = () => {
         api.getPortsStatus(),
         api.getRbacMatrix(),
         api.getRbacLogs(),
+        api.getDbStatus().catch(() => null),
       ]);
 
       setStats(statsRes);
@@ -88,6 +92,9 @@ export const AdminDashboard: React.FC = () => {
       setPortsStatus(portsRes);
       setRbacMatrix(matrixRes);
       setRbacLogs(logsRes.logs);
+      if (dbRes?.db) {
+        setDbStatus(dbRes.db);
+      }
     } catch (err) {
       console.error('Error loading admin data:', err);
     } finally {
@@ -97,20 +104,25 @@ export const AdminDashboard: React.FC = () => {
 
   const refreshOrdersAndStats = async () => {
     try {
-      const [statsRes, ordersRes, logsRes] = await Promise.all([
+      const [statsRes, ordersRes, logsRes, dbRes] = await Promise.all([
         api.getAdminStats(),
         api.getAdminOrders(),
         api.getRbacLogs().catch(() => ({ logs: [] })),
+        api.getDbStatus().catch(() => null),
       ]);
       setStats(statsRes);
       setOrders(ordersRes.orders);
       if (logsRes && logsRes.logs) {
         setRbacLogs(logsRes.logs);
       }
+      if (dbRes?.db) {
+        setDbStatus(dbRes.db);
+      }
     } catch (err) {
       console.error('Silent admin refresh failed:', err);
     }
   };
+
 
   const handleUpdateStock = async (id: string, newStock: number) => {
     try {
@@ -251,7 +263,7 @@ export const AdminDashboard: React.FC = () => {
         }}
       >
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+          <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 4 }}>
             <span
               style={{
                 background: '#ca8a04',
@@ -265,8 +277,30 @@ export const AdminDashboard: React.FC = () => {
               ADMINISTRATOR &bull; KITCHEN DISPATCH
             </span>
             <span style={{ fontSize: 11, color: '#a8a29e' }}>Automated Cron: Active (*/10 min)</span>
+            <span
+              id="admin-supabase-db-badge"
+              style={{
+                background: dbStatus?.isConnected ? '#14532d' : '#3f2214',
+                color: dbStatus?.isConnected ? '#86efac' : '#fdba74',
+                border: `1px solid ${dbStatus?.isConnected ? '#22c55e' : '#ea580c'}`,
+                fontSize: 10,
+                fontWeight: 700,
+                padding: '2px 8px',
+                borderRadius: 4,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4,
+              }}
+              title={dbStatus?.message || 'Supabase PostgreSQL Config'}
+            >
+              <Database size={10} />
+              {dbStatus?.isConnected
+                ? 'Supabase: Connected'
+                : `Supabase: ${dbStatus?.host || 'db.hblppudxqlpggwwyypld.supabase.co'} (Configured)`}
+            </span>
           </div>
           <h1 style={{ margin: '4px 0', fontSize: 24, color: '#fef08a' }}>Pizzeria Operations &amp; Inventory Hub</h1>
+
           <p style={{ margin: 0, fontSize: 12, color: '#d6d3d1' }}>
             Real-time control for ingredient stock thresholds, kitchen status progression, and notification logs.
           </p>
@@ -390,7 +424,21 @@ export const AdminDashboard: React.FC = () => {
             Cron runs: {cronStats?.totalRuns ?? 0} &bull; Check: */10m
           </span>
         </div>
+
+        <div style={{ background: '#fff', padding: 20, borderRadius: 12, border: '1px solid #e7e2de' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#736d68', fontSize: 11, fontWeight: 700 }}>
+            <span>SUPABASE POSTGRESQL</span>
+            <Database size={16} color={dbStatus?.isConnected ? '#16a34a' : '#d97706'} />
+          </div>
+          <h2 style={{ margin: '8px 0 2px', fontSize: 20, color: dbStatus?.isConnected ? '#16a34a' : '#b45309' }}>
+            {dbStatus?.isConnected ? 'Live & Synced' : 'Configured'}
+          </h2>
+          <span style={{ fontSize: 11, color: '#888' }} title={dbStatus?.host}>
+            Port: {dbStatus?.port || 5432} &bull; DB: {dbStatus?.database || 'postgres'}
+          </span>
+        </div>
       </div>
+
 
       {/* Main Tab Controller */}
       <div style={{ display: 'flex', gap: 10, borderBottom: '2px solid #e8e3df', marginBottom: 20, paddingBottom: 6 }}>

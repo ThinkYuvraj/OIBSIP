@@ -57,8 +57,10 @@ router.post('/google', async (req: Request, res: Response) => {
         email: user.email,
         role: user.role,
         isVerified: true,
+        theme: user.theme || 'light',
       },
     });
+
   } catch (err: any) {
     console.error('Google auth error:', err);
     res.status(401).json({ error: 'Invalid Google token' });
@@ -137,7 +139,7 @@ router.post('/verify-email', (req: Request, res: Response) => {
       res.json({
         message: 'Account is already verified!',
         token,
-        user: { id: user.id, name: user.name, email: user.email, role: user.role },
+        user: { id: user.id, name: user.name, email: user.email, role: user.role, theme: user.theme || 'light' },
       });
       return;
     }
@@ -161,7 +163,7 @@ router.post('/verify-email', (req: Request, res: Response) => {
     res.json({
       message: 'Email successfully verified! You are now logged in.',
       token,
-      user: { id: updated.id, name: updated.name, email: updated.email, role: updated.role },
+      user: { id: updated.id, name: updated.name, email: updated.email, role: updated.role, theme: updated.theme || 'light' },
     });
   } catch (err) {
     console.error('Verification error:', err);
@@ -277,6 +279,7 @@ router.post('/login', (req: Request, res: Response) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        theme: user.theme || 'light',
       },
     });
   } catch (err) {
@@ -364,6 +367,7 @@ router.post('/admin/login', (req: Request, res: Response) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        theme: user.theme || 'light',
       },
     });
   } catch (err) {
@@ -468,8 +472,43 @@ router.get('/me', authenticateToken, (req: AuthRequest, res: Response) => {
     email: user.email,
     role: user.role,
     isVerified: user.isVerified,
+    theme: user.theme || 'light',
     createdAt: user.createdAt,
   });
 });
 
+// 9. Update User Theme Preference
+router.patch('/theme', authenticateToken, (req: AuthRequest, res: Response) => {
+  if (!req.user) {
+    res.status(401).json({ error: 'Not authenticated' });
+    return;
+  }
+
+  const { theme } = req.body;
+  if (theme !== 'light' && theme !== 'dark') {
+    res.status(400).json({ error: 'Theme must be either "light" or "dark"' });
+    return;
+  }
+
+  const updated = db.updateUser(req.user.id, { theme });
+  if (!updated) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+
+  res.json({
+    message: `Theme updated to ${theme}`,
+    theme: updated.theme || theme,
+    user: {
+      id: updated.id,
+      name: updated.name,
+      email: updated.email,
+      role: updated.role,
+      isVerified: updated.isVerified,
+      theme: updated.theme || theme,
+    },
+  });
+});
+
 export default router;
+

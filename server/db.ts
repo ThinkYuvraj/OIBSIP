@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { db as pgDb } from '../src/db/index.ts';
-import { orders as pgOrders, inventory as pgInventory } from '../src/db/schema.ts';
+import { orders as pgOrders, inventory as pgInventory, users as pgUsers } from '../src/db/schema.ts';
 import { eq } from 'drizzle-orm';
 
 export interface User {
@@ -11,11 +11,13 @@ export interface User {
   passwordHash: string;
   role: 'CUSTOMER' | 'ADMIN';
   isVerified: boolean;
+  theme?: 'light' | 'dark';
   verificationCode?: string;
   resetToken?: string;
   resetTokenExpiry?: number;
   createdAt: string;
 }
+
 
 export interface InventoryItem {
   id: string;
@@ -317,8 +319,27 @@ class Database {
   }
 
   public addUser(user: User): User {
+    if (!user.theme) {
+      user.theme = 'light';
+    }
     this.state.users.push(user);
     this.save();
+
+    try {
+      pgDb
+        .insert(pgUsers)
+        .values({
+          uid: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+          theme: user.theme || 'light',
+        })
+        .catch(() => {});
+    } catch {
+      // ignore
+    }
+
     return user;
   }
 
@@ -327,8 +348,25 @@ class Database {
     if (idx === -1) return undefined;
     this.state.users[idx] = { ...this.state.users[idx], ...updates };
     this.save();
+
+    try {
+      const current = this.state.users[idx];
+      pgDb
+        .update(pgUsers)
+        .set({
+          name: current.name,
+          role: current.role,
+          theme: current.theme || 'light',
+        })
+        .where(eq(pgUsers.uid, current.id))
+        .catch(() => {});
+    } catch {
+      // ignore
+    }
+
     return this.state.users[idx];
   }
+
 
   // Inventory
   public getInventory(): InventoryItem[] {
@@ -345,7 +383,7 @@ class Database {
     this.state.inventory[idx] = { ...this.state.inventory[idx], ...updates };
     this.save();
 
-    // Async sync to Cloud SQL PostgreSQL
+    // Async sync to Supabase / PostgreSQL
     try {
       const current = this.state.inventory[idx];
       pgDb.update(pgInventory)
@@ -355,7 +393,7 @@ class Database {
           price: (Number(current.price) || 0).toFixed(2),
         })
         .where(eq(pgInventory.id, id))
-        .catch((e) => console.warn('[CloudSQL Inventory Sync]', e.message));
+        .catch((e) => console.warn('[Supabase Inventory Sync]', e.message));
     } catch {
       // Non-blocking
     }
@@ -421,7 +459,7 @@ class Database {
             statusHistory: order.statusHistory,
           },
         })
-        .catch((e) => console.warn('[CloudSQL Order Sync]', e.message));
+        .catch((e) => console.warn('[Supabase Order Sync]', e.message));
     } catch {
       // Non-blocking
     }
@@ -448,7 +486,7 @@ class Database {
           statusHistory: order.statusHistory,
         })
         .where(eq(pgOrders.id, id))
-        .catch((e) => console.warn('[CloudSQL Status Sync]', e.message));
+        .catch((e) => console.warn('[Supabase Status Sync]', e.message));
     } catch {
       // Non-blocking
     }
@@ -473,7 +511,7 @@ class Database {
           razorpayOrderId: order.razorpayOrderId || null,
         })
         .where(eq(pgOrders.id, id))
-        .catch((e) => console.warn('[CloudSQL Order Update Sync]', e.message));
+        .catch((e) => console.warn('[Supabase Order Update Sync]', e.message));
     } catch {
       // Non-blocking
     }

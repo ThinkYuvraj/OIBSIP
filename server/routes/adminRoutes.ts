@@ -10,7 +10,10 @@ import {
   logRbacEvent,
 } from '../rbac.js';
 
+import { getDbStatus } from '../../src/db/index.ts';
+
 const router = Router();
+
 
 // Protect all admin routes with authentication and strict RBAC port enforcement
 router.use(authenticateToken as any, enforcePortRole('ADMIN', PORTS_CONFIG.ADMIN_PORT) as any);
@@ -202,4 +205,14 @@ router.post('/rbac/simulate-cross-port-test', (req: AuthRequest, res: Response) 
   });
 });
 
+// 12. PostgreSQL / Supabase Database Connection Diagnostics
+router.get('/db-status', (_req: AuthRequest, res: Response) => {
+  const dbStatus = getDbStatus();
+  res.json({
+    dbStatus,
+    timestamp: new Date().toISOString(),
+  });
+});
+
 export default router;
+

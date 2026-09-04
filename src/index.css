@@ -1,2 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-:root{font-family:'DM Sans',Arial,sans-serif;color:#2b2725;background:#e8e8e8;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-width:320px}button,input{font:inherit}button{cursor:pointer}
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #2b2725;
+  background: #e8e8e8;
+  font-synthesis: none;
+  --bg-primary: #fffdfb;
+  --bg-secondary: #faf7f4;
+  --text-primary: #2b2725;
+  --text-secondary: #736d68;
+  --border-color: #eeeae7;
+}
+
+html.dark, :root[data-theme='dark'] {
+  color: #f5f3f0;
+  background: #0d0b0a;
+  --bg-primary: #1a1614;
+  --bg-secondary: #161210;
+  --text-primary: #f5f3f0;
+  --text-secondary: #a8a09a;
+  --border-color: #2e2621;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: inherit;
+  color: inherit;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+

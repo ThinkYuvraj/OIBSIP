@@ -10,7 +10,9 @@ import type {
   RbacMatrixResponse,
 } from '../types.js';
 
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_URL
+  ? `${String(import.meta.env.VITE_API_URL).replace(/\/$/, '')}/api`
+  : '/api');
 
 export function getStoredToken(): string | null {
   return localStorage.getItem('slice_fire_token');
@@ -105,7 +107,14 @@ export const api = {
 
   getMe: () => request<User>('/auth/me'),
 
+  updateTheme: (theme: 'light' | 'dark') =>
+    request<{ message: string; theme: 'light' | 'dark'; user?: User }>('/auth/theme', {
+      method: 'PATCH',
+      body: JSON.stringify({ theme }),
+    }),
+
   // Menu & Builder
+
   getPizzas: () => request<{ pizzas: ArtisanPizza[] }>('/pizzas'),
 
   getBuilderOptions: () =>
@@ -193,6 +202,8 @@ export const api = {
 
   // Dual-Port & RBAC Diagnostics
   getPortsStatus: () => request<PortStatusResponse>('/ports-status'),
+
+  getDbStatus: () => request<{ status: string; db: any; timestamp: string }>('/db-status'),
 
   getRbacMatrix: () => request<RbacMatrixResponse>('/admin/rbac/matrix'),
 
