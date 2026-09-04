@@ -35,7 +35,7 @@
       "id": "base-2",
       "name": "Neapolitan Hand-Tossed",
       "category": "base",
-      "stock": 18,
+      "stock": 25,
       "unit": "crusts",
       "threshold": 20,
       "price": 13.5,
@@ -428,7 +428,7 @@
       "tax": 1.16,
       "total": 19.16,
       "paymentStatus": "PAID",
-      "status": "In Kitchen",
+      "status": "Delivered",
       "statusHistory": [
         {
           "status": "Order Received",
@@ -444,10 +444,15 @@
           "status": "In Kitchen",
           "timestamp": "2026-09-03T20:21:05.444Z",
           "note": "Pizzaiolo has stretched the dough and loaded it into the volcanic stone oven."
+        },
+        {
+          "status": "Delivered",
+          "timestamp": "2026-09-04T12:33:15.496Z",
+          "note": "Order marked as Delivered"
         }
       ],
       "createdAt": "2026-09-03T20:20:58.316Z",
-      "updatedAt": "2026-09-03T20:21:05.444Z",
+      "updatedAt": "2026-09-04T12:33:15.496Z",
       "razorpayPaymentId": "pay_test_verified_456"
     },
     {
@@ -496,7 +501,7 @@
       "tax": 1.16,
       "total": 19.16,
       "paymentStatus": "PAID",
-      "status": "Order Received",
+      "status": "Delivered",
       "statusHistory": [
         {
           "status": "Order Received",
@@ -507,38 +512,23 @@
           "status": "Order Received",
           "timestamp": "2026-09-03T20:20:26.010Z",
           "note": "Payment verified (pay_test_verified_123). Kitchen ticket generated."
+        },
+        {
+          "status": "Delivered",
+          "timestamp": "2026-09-04T12:33:17.329Z",
+          "note": "Order marked as Delivered"
         }
       ],
       "createdAt": "2026-09-03T20:20:25.984Z",
-      "updatedAt": "2026-09-03T20:20:26.010Z",
+      "updatedAt": "2026-09-04T12:33:17.329Z",
       "razorpayPaymentId": "pay_test_verified_123"
     }
   ],
   "emailLogs": [
     {
-      "id": "alert-1788468000012-veg-4",
-      "timestamp": "2026-09-03T20:40:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
-      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
-      "triggeredByItem": "Wild Button Mushrooms",
-      "currentStock": 17,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788468000010-cheese-4",
-      "timestamp": "2026-09-03T20:40:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788468000008-sauce-3",
-      "timestamp": "2026-09-03T20:40:00.003Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788526129446-sauce-3",
+      "timestamp": "2026-09-04T12:48:44.748Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -546,9 +536,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788468000006-base-5",
-      "timestamp": "2026-09-03T20:40:00.003Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788526127180-base-5",
+      "timestamp": "2026-09-04T12:48:44.748Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -556,19 +546,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788468000004-base-2",
-      "timestamp": "2026-09-03T20:40:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788467989095-veg-4",
-      "timestamp": "2026-09-03T20:39:49.077Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525966458-veg-4",
+      "timestamp": "2026-09-04T12:45:56.455Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -576,9 +556,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467989094-cheese-4",
-      "timestamp": "2026-09-03T20:39:49.077Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525963972-cheese-4",
+      "timestamp": "2026-09-04T12:45:56.455Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -586,9 +566,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467989092-sauce-3",
-      "timestamp": "2026-09-03T20:39:49.077Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525961546-sauce-3",
+      "timestamp": "2026-09-04T12:45:56.455Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -596,9 +576,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467989090-base-5",
-      "timestamp": "2026-09-03T20:39:49.077Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525959132-base-5",
+      "timestamp": "2026-09-04T12:45:56.455Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -606,19 +586,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467989085-base-2",
-      "timestamp": "2026-09-03T20:39:49.077Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788467965580-veg-4",
-      "timestamp": "2026-09-03T20:39:25.561Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525849880-veg-4",
+      "timestamp": "2026-09-04T12:44:01.547Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -626,9 +596,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467965578-cheese-4",
-      "timestamp": "2026-09-03T20:39:25.561Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525847971-cheese-4",
+      "timestamp": "2026-09-04T12:44:01.547Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -636,9 +606,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467965577-sauce-3",
-      "timestamp": "2026-09-03T20:39:25.561Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525846387-sauce-3",
+      "timestamp": "2026-09-04T12:44:01.547Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -646,9 +616,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467965574-base-5",
-      "timestamp": "2026-09-03T20:39:25.561Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525844519-base-5",
+      "timestamp": "2026-09-04T12:44:01.547Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -656,19 +626,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467965569-base-2",
-      "timestamp": "2026-09-03T20:39:25.561Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788467400019-veg-4",
-      "timestamp": "2026-09-03T20:30:00.004Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525812877-veg-4",
+      "timestamp": "2026-09-04T12:43:21.834Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -676,9 +636,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467400018-cheese-4",
-      "timestamp": "2026-09-03T20:30:00.004Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525810179-cheese-4",
+      "timestamp": "2026-09-04T12:43:21.834Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -686,9 +646,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467400014-sauce-3",
-      "timestamp": "2026-09-03T20:30:00.004Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525807690-sauce-3",
+      "timestamp": "2026-09-04T12:43:21.834Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -696,9 +656,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467400011-base-5",
-      "timestamp": "2026-09-03T20:30:00.004Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525805814-base-5",
+      "timestamp": "2026-09-04T12:43:21.834Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -706,19 +666,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788467400007-base-2",
-      "timestamp": "2026-09-03T20:30:00.004Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466947606-veg-4",
-      "timestamp": "2026-09-03T20:22:27.586Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525766880-veg-4",
+      "timestamp": "2026-09-04T12:42:36.600Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -726,9 +676,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466947604-cheese-4",
-      "timestamp": "2026-09-03T20:22:27.586Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525764343-cheese-4",
+      "timestamp": "2026-09-04T12:42:36.600Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -736,9 +686,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466947603-sauce-3",
-      "timestamp": "2026-09-03T20:22:27.586Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525762397-sauce-3",
+      "timestamp": "2026-09-04T12:42:36.600Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -746,9 +696,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466947601-base-5",
-      "timestamp": "2026-09-03T20:22:27.586Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525760141-base-5",
+      "timestamp": "2026-09-04T12:42:36.600Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -756,19 +706,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466947595-base-2",
-      "timestamp": "2026-09-03T20:22:27.586Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466912406-veg-4",
-      "timestamp": "2026-09-03T20:21:52.248Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525702010-veg-4",
+      "timestamp": "2026-09-04T12:41:31.633Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -776,9 +716,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466912405-cheese-4",
-      "timestamp": "2026-09-03T20:21:52.248Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525699465-cheese-4",
+      "timestamp": "2026-09-04T12:41:31.633Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -786,9 +726,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466912403-sauce-3",
-      "timestamp": "2026-09-03T20:21:52.248Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525697024-sauce-3",
+      "timestamp": "2026-09-04T12:41:31.633Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -796,9 +736,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466912400-base-5",
-      "timestamp": "2026-09-03T20:21:52.248Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525694493-base-5",
+      "timestamp": "2026-09-04T12:41:31.633Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -806,19 +746,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466912306-base-2",
-      "timestamp": "2026-09-03T20:21:52.248Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466908504-veg-4",
-      "timestamp": "2026-09-03T20:21:48.486Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525608955-veg-4",
+      "timestamp": "2026-09-04T12:40:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -826,9 +756,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466908502-cheese-4",
-      "timestamp": "2026-09-03T20:21:48.486Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525606700-cheese-4",
+      "timestamp": "2026-09-04T12:40:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -836,9 +766,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466908501-sauce-3",
-      "timestamp": "2026-09-03T20:21:48.486Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525604346-sauce-3",
+      "timestamp": "2026-09-04T12:40:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -846,9 +776,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466908499-base-5",
-      "timestamp": "2026-09-03T20:21:48.486Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525602517-base-5",
+      "timestamp": "2026-09-04T12:40:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -856,19 +786,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466908494-base-2",
-      "timestamp": "2026-09-03T20:21:48.486Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466897663-veg-4",
-      "timestamp": "2026-09-03T20:21:16.236Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525238474-veg-4",
+      "timestamp": "2026-09-04T12:33:41.838Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -876,39 +796,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466893496-cheese-4",
-      "timestamp": "2026-09-03T20:21:16.236Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466888729-sauce-3",
-      "timestamp": "2026-09-03T20:21:16.236Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466884555-base-5",
-      "timestamp": "2026-09-03T20:21:16.236Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466882398-veg-4",
-      "timestamp": "2026-09-03T20:21:01.546Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525236995-veg-4",
+      "timestamp": "2026-09-04T12:33:39.862Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -916,9 +806,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466881063-veg-4",
-      "timestamp": "2026-09-03T20:20:58.341Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525236632-veg-4",
+      "timestamp": "2026-09-04T12:33:42.091Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -926,19 +816,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466880403-base-2",
-      "timestamp": "2026-09-03T20:21:16.236Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466878228-cheese-4",
-      "timestamp": "2026-09-03T20:21:01.546Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525236015-cheese-4",
+      "timestamp": "2026-09-04T12:33:41.838Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -946,79 +826,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466876896-cheese-4",
-      "timestamp": "2026-09-03T20:20:58.341Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466874074-sauce-3",
-      "timestamp": "2026-09-03T20:21:01.546Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466872646-sauce-3",
-      "timestamp": "2026-09-03T20:20:58.341Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466869915-base-5",
-      "timestamp": "2026-09-03T20:21:01.546Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466868493-base-5",
-      "timestamp": "2026-09-03T20:20:58.341Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466865754-base-2",
-      "timestamp": "2026-09-03T20:21:01.546Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466864318-base-2",
-      "timestamp": "2026-09-03T20:20:58.341Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466846954-veg-4",
-      "timestamp": "2026-09-03T20:20:26.011Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525235355-veg-4",
+      "timestamp": "2026-09-04T12:33:41.518Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -1026,9 +836,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466842736-cheese-4",
-      "timestamp": "2026-09-03T20:20:26.011Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525234400-cheese-4",
+      "timestamp": "2026-09-04T12:33:42.091Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -1036,39 +846,19 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466838584-sauce-3",
-      "timestamp": "2026-09-03T20:20:26.011Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
+      "id": "alert-1788525234225-cheese-4",
+      "timestamp": "2026-09-04T12:33:39.862Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
       "threshold": 20
     },
     {
-      "id": "alert-1788466834410-base-5",
-      "timestamp": "2026-09-03T20:20:26.011Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466830206-base-2",
-      "timestamp": "2026-09-03T20:20:26.011Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466823974-veg-4",
-      "timestamp": "2026-09-03T20:20:00.003Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525233376-veg-4",
+      "timestamp": "2026-09-04T12:33:31.913Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -1076,19 +866,19 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466818304-cheese-4",
-      "timestamp": "2026-09-03T20:20:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
+      "id": "alert-1788525232976-sauce-3",
+      "timestamp": "2026-09-04T12:33:41.838Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
       "threshold": 20
     },
     {
-      "id": "alert-1788466815602-veg-4",
-      "timestamp": "2026-09-03T20:19:51.965Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525232668-veg-4",
+      "timestamp": "2026-09-04T12:33:32.081Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
       "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
       "triggeredByItem": "Wild Button Mushrooms",
@@ -1096,19 +886,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466814030-sauce-3",
-      "timestamp": "2026-09-03T20:20:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466811446-cheese-4",
-      "timestamp": "2026-09-03T20:19:51.965Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525231759-cheese-4",
+      "timestamp": "2026-09-04T12:33:41.518Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
       "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
       "triggeredByItem": "Aged Sharp Smoked Cheddar",
@@ -1116,19 +896,9 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466809810-base-5",
-      "timestamp": "2026-09-03T20:20:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788466807298-sauce-3",
-      "timestamp": "2026-09-03T20:19:51.965Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525231410-sauce-3",
+      "timestamp": "2026-09-04T12:33:39.862Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
       "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
       "triggeredByItem": "Truffle Garlic Cream",
@@ -1136,19 +906,129 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466805633-base-2",
-      "timestamp": "2026-09-03T20:20:00.003Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
+      "id": "alert-1788525230935-veg-4",
+      "timestamp": "2026-09-04T12:33:26.991Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
       "threshold": 20
     },
     {
-      "id": "alert-1788466803149-base-5",
-      "timestamp": "2026-09-03T20:19:51.965Z",
-      "recipient": "admin@sliceandfire.com",
+      "id": "alert-1788525230543-veg-4",
+      "timestamp": "2026-09-04T12:33:25.812Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525230198-sauce-3",
+      "timestamp": "2026-09-04T12:33:42.091Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525229583-cheese-4",
+      "timestamp": "2026-09-04T12:33:31.913Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525229416-veg-4",
+      "timestamp": "2026-09-04T12:33:24.347Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525228486-cheese-4",
+      "timestamp": "2026-09-04T12:33:32.081Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525228207-veg-4",
+      "timestamp": "2026-09-04T12:33:36.132Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525227968-veg-4",
+      "timestamp": "2026-09-04T12:33:26.029Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525227623-veg-4",
+      "timestamp": "2026-09-04T12:33:25.165Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525227104-cheese-4",
+      "timestamp": "2026-09-04T12:33:36.132Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525226499-veg-4",
+      "timestamp": "2026-09-04T12:33:24.994Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525226237-sauce-3",
+      "timestamp": "2026-09-04T12:33:41.518Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525225917-base-5",
+      "timestamp": "2026-09-04T12:33:41.838Z",
+      "recipient": "thinkyuvraj2@gmail.com",
       "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
       "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
@@ -1156,19 +1036,499 @@
       "threshold": 20
     },
     {
-      "id": "alert-1788466797475-base-2",
-      "timestamp": "2026-09-03T20:19:51.965Z",
-      "recipient": "admin@sliceandfire.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (18 crusts remaining)",
-      "body": "Low stock warning for Neapolitan Hand-Tossed: 18 crusts remaining (Threshold: 20 crusts)",
+      "id": "alert-1788525225231-base-5",
+      "timestamp": "2026-09-04T12:33:39.862Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525224492-veg-4",
+      "timestamp": "2026-09-04T12:33:27.167Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525224420-base-5",
+      "timestamp": "2026-09-04T12:33:41.518Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525224083-veg-4",
+      "timestamp": "2026-09-04T12:33:27.343Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525223864-cheese-4",
+      "timestamp": "2026-09-04T12:33:26.029Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525223794-cheese-4",
+      "timestamp": "2026-09-04T12:33:26.991Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525223583-cheese-4",
+      "timestamp": "2026-09-04T12:33:25.812Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525223431-base-5",
+      "timestamp": "2026-09-04T12:33:42.091Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525223278-sauce-3",
+      "timestamp": "2026-09-04T12:33:32.081Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525222688-cheese-4",
+      "timestamp": "2026-09-04T12:33:24.347Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525222153-sauce-3",
+      "timestamp": "2026-09-04T12:33:31.913Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525221740-sauce-3",
+      "timestamp": "2026-09-04T12:33:36.132Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525221729-cheese-4",
+      "timestamp": "2026-09-04T12:33:24.994Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525221473-cheese-4",
+      "timestamp": "2026-09-04T12:33:25.165Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525221370-sauce-3",
+      "timestamp": "2026-09-04T12:33:25.812Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525220874-sauce-3",
+      "timestamp": "2026-09-04T12:33:26.991Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525220413-veg-4",
+      "timestamp": "2026-09-04T12:33:25.503Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525219999-base-5",
+      "timestamp": "2026-09-04T12:33:36.132Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525219337-cheese-4",
+      "timestamp": "2026-09-04T12:33:27.167Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525218977-sauce-3",
+      "timestamp": "2026-09-04T12:33:26.029Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525218508-cheese-4",
+      "timestamp": "2026-09-04T12:33:27.343Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525217992-base-5",
+      "timestamp": "2026-09-04T12:33:32.081Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525217531-sauce-3",
+      "timestamp": "2026-09-04T12:33:24.347Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525217143-base-5",
+      "timestamp": "2026-09-04T12:33:31.913Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525216844-sauce-3",
+      "timestamp": "2026-09-04T12:33:25.165Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525216328-sauce-3",
+      "timestamp": "2026-09-04T12:33:27.167Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525216017-base-5",
+      "timestamp": "2026-09-04T12:33:26.991Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525215466-base-5",
+      "timestamp": "2026-09-04T12:33:25.812Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525215231-cheese-4",
+      "timestamp": "2026-09-04T12:33:25.503Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525215016-sauce-3",
+      "timestamp": "2026-09-04T12:33:24.994Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525214391-base-5",
+      "timestamp": "2026-09-04T12:33:26.029Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525214082-sauce-3",
+      "timestamp": "2026-09-04T12:33:25.503Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525213852-sauce-3",
+      "timestamp": "2026-09-04T12:33:27.343Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525213245-base-5",
+      "timestamp": "2026-09-04T12:33:25.165Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525212732-base-5",
+      "timestamp": "2026-09-04T12:33:25.503Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525212160-base-5",
+      "timestamp": "2026-09-04T12:33:27.167Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525211747-base-5",
+      "timestamp": "2026-09-04T12:33:24.347Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525211087-base-2",
+      "timestamp": "2026-09-04T12:33:26.991Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (17 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 17 crusts remaining (Threshold: 20 crusts)",
       "triggeredByItem": "Neapolitan Hand-Tossed",
-      "currentStock": 18,
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525210875-base-5",
+      "timestamp": "2026-09-04T12:33:24.994Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525210180-base-5",
+      "timestamp": "2026-09-04T12:33:27.343Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
+      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525209696-base-2",
+      "timestamp": "2026-09-04T12:33:26.029Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (12 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 12 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 12,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525209210-base-2",
+      "timestamp": "2026-09-04T12:33:25.812Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (13 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 13 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 13,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525208494-base-2",
+      "timestamp": "2026-09-04T12:33:25.503Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (14 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 14 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525208099-base-2",
+      "timestamp": "2026-09-04T12:33:25.165Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (15 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 15 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 15,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525207203-base-2",
+      "timestamp": "2026-09-04T12:33:24.994Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (16 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525206573-base-2",
+      "timestamp": "2026-09-04T12:33:24.347Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Neapolitan Hand-Tossed (17 crusts remaining)",
+      "body": "Low stock warning for Neapolitan Hand-Tossed: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Neapolitan Hand-Tossed",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525170033-veg-4",
+      "timestamp": "2026-09-04T12:32:37.716Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
+      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525167543-cheese-4",
+      "timestamp": "2026-09-04T12:32:37.716Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
+      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788525165165-sauce-3",
+      "timestamp": "2026-09-04T12:32:37.716Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
+      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
       "threshold": 20
     }
   ],
   "cronStats": {
-    "lastRun": "2026-09-03T20:40:00.003Z",
-    "totalRuns": 13,
-    "lastAlertSent": "2026-09-03T20:40:00.003Z"
+    "lastRun": "2026-09-04T12:45:56.455Z",
+    "totalRuns": 48,
+    "lastAlertSent": "2026-09-04T12:45:56.455Z"
   }
 }

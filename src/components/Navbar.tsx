@@ -147,33 +147,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ShieldCheck size={12} /> Admin Portal
           </button>
         )}
-
-        <div
-          id="ports-status-badge"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            background: '#f5f3f0',
-            border: '1px solid #e2ddd8',
-            borderRadius: 999,
-            padding: '3px 10px',
-            fontSize: 10,
-            fontWeight: 700,
-            color: '#574e48',
-          }}
-          title="Dual Port Architecture with Role-Based Access Control: Port 3000 (Client Storefront) and Port 3001 (Admin Operations)"
-        >
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#15803d' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
-            :3000 Client
-          </span>
-          <span style={{ color: '#d1cdc7' }}>|</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#b45309' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }} />
-            :3001 Admin
-          </span>
-        </div>
       </nav>
 
       <div className="header-actions">

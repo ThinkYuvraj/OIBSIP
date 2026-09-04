@@ -85,6 +85,7 @@ function MainApp() {
     checkUserOrders();
     const interval = setInterval(checkUserOrders, 5000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   // Cart actions
@@ -379,14 +380,39 @@ function MainApp() {
                       <div
                         className="pizza-art"
                         style={{
-                          background: `linear-gradient(135deg, ${pizza.color}25 0%, ${pizza.color}50 100%)`,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: 42,
+                          position: 'relative',
+                          overflow: 'hidden',
+                          background: '#1c1917',
                         }}
                       >
-                        🍕
+                        {pizza.imageUrl ? (
+                          <img
+                            src={pizza.imageUrl}
+                            alt={pizza.name}
+                            referrerPolicy="no-referrer"
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              display: 'block',
+                              transition: 'transform 0.3s ease',
+                            }}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              background: `linear-gradient(135deg, ${pizza.color}25 0%, ${pizza.color}50 100%)`,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: 42,
+                            }}
+                          >
+                            🍕
+                          </div>
+                        )}
                       </div>
                       <div className="card-copy">
                         <div>
@@ -407,6 +433,7 @@ function MainApp() {
                               isCustom: false,
                               color: pizza.color,
                               description: pizza.description,
+                              imageUrl: pizza.imageUrl,
                             })
                           }
                         >

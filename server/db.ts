@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { db as pgDb } from '../src/db/index.ts';
-import { orders as pgOrders, inventory as pgInventory, users as pgUsers } from '../src/db/schema.ts';
+import { orders as pgOrders, inventory as pgInventory } from '../src/db/schema.ts';
 import { eq } from 'drizzle-orm';
 
 export interface User {

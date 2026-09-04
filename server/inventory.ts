@@ -2,46 +2,70 @@ import cron from 'node-cron';
 import nodemailer from 'nodemailer';
 import { db, InventoryItem, Order } from './db.js';
 
-const ADMIN_EMAIL = process.env.ADMIN_ALERT_EMAIL || 'admin@sliceandfire.com';
+const ADMIN_EMAIL = process.env.ADMIN_ALERT_EMAIL || process.env.ADMIN_EMAIL || 'admin@sliceandfire.com';
 
 // Setup nodemailer transporter (uses test transporter or SMTP config)
 let transporter: nodemailer.Transporter | null = null;
 
+function getSenderInfo() {
+  // SMTP authentication username must be an email address
+  const smtpAuthUser = (process.env.SMTP_USER && process.env.SMTP_USER.includes('@'))
+    ? process.env.SMTP_USER.trim()
+    : (process.env.EMAIL_USER && process.env.EMAIL_USER.includes('@'))
+    ? process.env.EMAIL_USER.trim()
+    : (process.env.SMTP_USER || process.env.EMAIL_USER || '').trim();
+
+  const smtpAuthPass = (process.env.SMTP_PASS || process.env.EMAIL_PASS || '').replace(/\s+/g, '');
+
+  const senderName = process.env.EMAIL_USER && !process.env.EMAIL_USER.includes('@')
+    ? process.env.EMAIL_USER.trim()
+    : 'Slice & Fire Kitchen Ops';
+
+  const senderEmail = smtpAuthUser || 'inventory@sliceandfire.com';
+
+  return {
+    smtpAuthUser,
+    smtpAuthPass,
+    fromAddress: `"${senderName}" <${senderEmail}>`,
+  };
+}
+
 async function getTransporter(): Promise<nodemailer.Transporter> {
   if (transporter) return transporter;
 
-  const emailUser = process.env.EMAIL_USER || process.env.SMTP_USER;
-  const emailPass = (process.env.EMAIL_PASS || process.env.SMTP_PASS || '').replace(/\s+/g, '');
+  const { smtpAuthUser, smtpAuthPass } = getSenderInfo();
 
-  if (emailUser && emailPass) {
+  if (smtpAuthUser && smtpAuthPass) {
     try {
-      transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: emailUser,
-          pass: emailPass,
-        },
-      });
-      return transporter;
-    } catch (err) {
-      console.warn('[Nodemailer] Failed to init Gmail transporter, falling back:', err);
-    }
-  }
+      let candidateTransporter: nodemailer.Transporter;
 
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-    try {
-      transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      if (process.env.SMTP_HOST && !process.env.SMTP_HOST.includes('gmail')) {
+        candidateTransporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port: Number(process.env.SMTP_PORT) || 587,
+          secure: Number(process.env.SMTP_PORT) === 465,
+          auth: {
+            user: smtpAuthUser,
+            pass: smtpAuthPass,
+          },
+        });
+      } else {
+        // Default to Gmail transport service when using Gmail SMTP or general gmail credentials
+        candidateTransporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: smtpAuthUser,
+            pass: smtpAuthPass,
+          },
+        });
+      }
+
+      await candidateTransporter.verify();
+      console.log(`[Nodemailer] SMTP transport verified successfully for ${smtpAuthUser}`);
+      transporter = candidateTransporter;
       return transporter;
-    } catch {
-      // fallback to jsonTransport below
+    } catch (err: any) {
+      console.warn(`[Nodemailer] SMTP verification failed (${err.message}). Falling back to internal transport.`);
     }
   }
 
@@ -105,15 +129,20 @@ export async function checkInventoryThresholds(isManual = false): Promise<{
         </div>
       `;
 
+      const { fromAddress } = getSenderInfo();
       try {
         await transporterInstance.sendMail({
-          from: '"Slice & Fire Kitchen Ops" <inventory@sliceandfire.com>',
+          from: fromAddress,
           to: ADMIN_EMAIL,
           subject,
           html: htmlBody,
         });
-      } catch (err) {
-        console.error(`[Inventory Cron] Failed to send email for ${item.name}:`, err);
+      } catch (err: any) {
+        console.warn(`[Inventory Cron] Notification email for ${item.name} could not be delivered via SMTP (${err.message}). Logged in admin audit records.`);
+        if (err.code === 'EAUTH' || (err.response && err.response.includes('535'))) {
+          // Switch to jsonTransport to prevent repeated authentication failures
+          transporter = nodemailer.createTransport({ jsonTransport: true });
+        }
       }
 
       // Log in DB for admin dashboard visibility

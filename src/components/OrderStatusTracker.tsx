@@ -70,6 +70,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
     }, 3500);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   if (!user) {

@@ -89,6 +89,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
       quantity: 1,
       isCustom: true,
       color: '#a63b1d',
+      imageUrl: '/images/artisan-hero.jpg',
       description: `${selectedSauce.name}, ${selectedCheese.name}, with ${
         selectedVeggies.length > 0 ? selectedVeggies.map((v) => v.name).join(', ') : 'no extra veggies'
       }`,
