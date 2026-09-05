@@ -145,7 +145,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: 6 }}>
+        <div className="builder-step-pills" style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {[1, 2, 3, 4].map((stepNum) => (
             <button
               key={stepNum}
@@ -212,24 +212,16 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
       )}
 
       {/* Main Builder Grid: Visual Simulator on Left + Selection Matrix on Right */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(320px, 420px) 1fr',
-          gap: 32,
-          alignItems: 'start',
-        }}
-      >
+      <div className="builder-main-grid">
         {/* Left: Interactive Pizza Stage & Spec Breakdown */}
         <div
+          className="builder-simulator-card"
           style={{
-            background: '#fff',
+            background: isDark ? '#201a17' : '#fff',
             borderRadius: 16,
-            border: '1px solid #e5dfda',
+            border: isDark ? '1px solid #3d332d' : '1px solid #e5dfda',
             padding: 24,
             boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-            position: 'sticky',
-            top: 20,
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: 16 }}>

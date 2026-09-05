@@ -9,6 +9,7 @@ interface AuthContextType {
   login: (token: string, user: User) => void;
   logout: () => void;
   refreshUser: () => Promise<void>;
+  updateUserTheme: (theme: 'light' | 'dark') => void;
   isAdmin: boolean;
   isCustomer: boolean;
 }
@@ -57,6 +58,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
   };
 
+  const updateUserTheme = (newTheme: 'light' | 'dark') => {
+    setUser((prev) => (prev ? { ...prev, theme: newTheme } : null));
+  };
+
   const isAdmin = user?.role === 'ADMIN';
   const isCustomer = user?.role === 'CUSTOMER';
 
@@ -69,6 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         login,
         logout,
         refreshUser,
+        updateUserTheme,
         isAdmin,
         isCustomer,
       }}

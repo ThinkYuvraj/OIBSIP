@@ -8,6 +8,23 @@
     <meta name="description" content="Artisan wood-fired pizza ordering application featuring customizable pizzas, artisan menu, interactive cart, and responsive order flow." />
     <meta property="og:title" content="Slice &amp; Fire Pizza Delivery" />
     <meta property="og:description" content="Artisan wood-fired pizza ordering application featuring customizable pizzas, artisan menu, interactive cart, and responsive order flow." />
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('slice_fire_theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

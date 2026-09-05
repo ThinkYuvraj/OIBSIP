@@ -17,18 +17,29 @@ import { api } from './api/client.js';
 import { Flame, Pizza, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
 
 function MainApp() {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, updateUserTheme } = useAuth();
   const { theme, setTheme, isDark } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('home');
+  const lastSyncedUserIdRef = React.useRef<string | null>(null);
 
-  // Sync user database theme preference when authenticated
+  // Sync user database theme preference once on login / session recovery
   useEffect(() => {
-    if (user?.theme && (user.theme === 'light' || user.theme === 'dark')) {
-      if (user.theme !== theme) {
+    if (user && user.id !== lastSyncedUserIdRef.current) {
+      lastSyncedUserIdRef.current = user.id;
+      if (user.theme && (user.theme === 'light' || user.theme === 'dark')) {
         setTheme(user.theme);
       }
+    } else if (!user) {
+      lastSyncedUserIdRef.current = null;
     }
-  }, [user?.theme, theme, setTheme]);
+  }, [user, setTheme]);
+
+  // Keep auth context user.theme updated when theme changes
+  useEffect(() => {
+    if (user && user.theme !== theme) {
+      updateUserTheme(theme);
+    }
+  }, [theme, user, updateUserTheme]);
 
   // Menu pizzas from API
   const [pizzas, setPizzas] = useState<ArtisanPizza[]>([]);
@@ -174,7 +185,7 @@ function MainApp() {
         {activeTab === 'home' && (
           <div id="home-view">
             {/* Hero Section */}
-            <section className="hero">
+            <section className="hero" id="hero-section">
               <div>
                 <span className="eyebrow">LEVEL 3 PRODUCTION STACK</span>
                 <h1>Charred Perfection,<br />Baked to Order.</h1>
@@ -184,106 +195,55 @@ function MainApp() {
                   and watch your order bake and travel live on your screen.
                 </p>
 
-                <p className="actions">
+                <div className="actions" id="hero-actions">
                   <button
                     id="hero-order-now-btn"
                     className="primary"
                     onClick={() => setActiveTab('builder')}
-                    style={{ display: 'flex', alignItems: 'center', gap: 6 }}
                   >
-                    <Pizza size={15} /> Build Custom Pie
+                    <Pizza size={16} />
+                    <span>Build Custom Pie</span>
                   </button>
                   <button
                     id="hero-view-menu-btn"
                     className="outline"
                     onClick={() => setActiveTab('menu')}
                   >
-                    Artisan Varieties &rarr;
+                    <span>Artisan Varieties</span>
+                    <span aria-hidden="true">&rarr;</span>
                   </button>
-                </p>
+                </div>
               </div>
 
-              {/* Visual Hero Showcase */}
-              <div
-                className="hero-art"
-                style={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  background: '#2b110a',
-                  minHeight: 320,
-                  borderRadius: 16,
-                }}
-              >
+              {/* Visual Hero Showcase Card */}
+              <div className="hero-art" id="hero-showcase-card">
                 {/* Hero Pizza Background Image */}
                 <img
                   src="/images/artisan-hero.jpg"
                   alt="Artisan Neapolitan Pizza from 900F Oven"
                   referrerPolicy="no-referrer"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0,
-                  }}
+                  className="hero-art-img"
                 />
 
                 {/* Dark Vignette Gradient Overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(180deg, rgba(20,10,8,0.2) 0%, rgba(20,10,8,0.4) 40%, rgba(15,8,6,0.92) 100%)',
-                    zIndex: 1,
-                  }}
-                />
+                <div className="hero-art-overlay" />
 
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 20,
-                    right: 20,
-                    background: 'rgba(20,10,8,0.75)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(254,240,138,0.3)',
-                    padding: '6px 14px',
-                    borderRadius: 999,
-                    color: '#fef08a',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    zIndex: 2,
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                  }}
-                >
-                  <Flame size={14} color="#facc15" /> 900°F Volcanic Stone Hearth
-                </div>
-
-                <div style={{ position: 'relative', zIndex: 2, padding: '20px 24px' }}>
-                  <span
-                    style={{
-                      background: '#c92722',
-                      color: '#fff',
-                      padding: '3px 10px',
-                      borderRadius: 4,
-                      fontSize: 10,
-                      fontWeight: 800,
-                      display: 'inline-block',
-                      marginBottom: 6,
-                      letterSpacing: '0.05em',
-                    }}
-                  >
+                {/* Top Row: Category Tag & Volcanic Hearth Pill */}
+                <div className="hero-art-header">
+                  <span className="hero-art-badge">
                     SIGNATURE CRAFT
                   </span>
-                  <h3 style={{ margin: 0, fontSize: 20, color: '#fff', fontWeight: 800 }}>Artisan Wood-Fired Neapolitan</h3>
-                  <p style={{ margin: '4px 0 0', color: '#fed7aa', fontSize: 12, textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+
+                  <div className="hero-art-hearth-pill">
+                    <Flame size={13} color="#facc15" />
+                    <span>900°F Volcanic Stone Hearth</span>
+                  </div>
+                </div>
+
+                {/* Bottom Row: Title & Gourmet Ingredients */}
+                <div className="hero-art-content">
+                  <h3>Artisan Wood-Fired Neapolitan</h3>
+                  <p>
                     Blistered sourdough cornicione, San Marzano marinara, fior di latte mozzarella, and cold-pressed olive oil.
                   </p>
                 </div>
@@ -292,8 +252,8 @@ function MainApp() {
 
             {/* Level 3 Architecture & Capabilities Highlight */}
             <section
+              className="capabilities-bar"
               style={{
-                padding: '24px 78px',
                 background: isDark ? '#181412' : '#faf7f4',
                 borderTop: isDark ? '1px solid #2d2521' : '1px solid #eee8e4',
                 borderBottom: isDark ? '1px solid #2d2521' : '1px solid #eee8e4',

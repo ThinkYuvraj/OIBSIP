@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Order, OrderStatus } from '../types.js';
 import { api } from '../api/client.js';
 import { useAuth } from '../context/AuthContext.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { CheckCircle2, Clock, ChefHat, Bike, PackageCheck, RefreshCw } from 'lucide-react';
 
 interface OrderStatusTrackerProps {
@@ -37,6 +38,7 @@ const STATUS_STEPS: { status: OrderStatus; label: string; icon: any; description
 
 export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelectOrderToPay }) => {
   const { user } = useAuth();
+  const { isDark } = useTheme();
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -154,8 +156,9 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
             onClick={() => fetchOrders(true)}
             id="tracker-refresh-btn"
             style={{
-              background: '#fff',
-              border: '1px solid #ddd',
+              background: isDark ? '#261f1c' : '#fff',
+              border: isDark ? '1px solid #443730' : '1px solid #ddd',
+              color: isDark ? '#f5f2ee' : '#2b2725',
               borderRadius: '50%',
               width: 32,
               height: 32,
@@ -174,7 +177,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 340px) 1fr', gap: 24 }}>
         {/* Left: Orders history selector */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <h3 style={{ margin: '0 0 4px', fontSize: 14, color: '#574f4b' }}>Your Orders ({orders.length})</h3>
+          <h3 style={{ margin: '0 0 4px', fontSize: 14, color: isDark ? '#a8a09a' : '#574f4b' }}>Your Orders ({orders.length})</h3>
 
           {orders.map((o) => {
             const isSelected = o.id === currentOrder.id;
@@ -186,15 +189,15 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                 style={{
                   padding: '14px 16px',
                   borderRadius: 12,
-                  background: isSelected ? '#ffffff' : '#faf8f6',
-                  border: isSelected ? '2px solid #c92722' : '1px solid #e7e1dc',
+                  background: isSelected ? (isDark ? '#2a221d' : '#ffffff') : (isDark ? '#1a1614' : '#faf8f6'),
+                  border: isSelected ? '2px solid #c92722' : (isDark ? '1px solid #362c26' : '1px solid #e7e1dc'),
                   boxShadow: isSelected ? '0 4px 14px rgba(201,39,34,0.1)' : 'none',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                  <b style={{ fontSize: 13, color: '#2b2725' }}>Order #{o.id}</b>
+                  <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>Order #{o.id}</b>
                   <span
                     style={{
                       fontSize: 10,
@@ -223,12 +226,12 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#78716c' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: isDark ? '#a8a09a' : '#78716c' }}>
                   <span>{new Date(o.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                  <b style={{ color: '#2b2725' }}>${o.total.toFixed(2)}</b>
+                  <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>${o.total.toFixed(2)}</b>
                 </div>
 
-                <div style={{ marginTop: 6, fontSize: 11, color: '#574f4b' }}>
+                <div style={{ marginTop: 6, fontSize: 11, color: isDark ? '#a8a09a' : '#574f4b' }}>
                   {o.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}
                 </div>
               </div>
@@ -239,9 +242,9 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
         {/* Right: Live Real-time Status Timeline & Details */}
         <div
           style={{
-            background: '#ffffff',
+            background: isDark ? '#1a1614' : '#ffffff',
             borderRadius: 16,
-            border: '1px solid #e5dfda',
+            border: isDark ? '1px solid #362c26' : '1px solid #e5dfda',
             padding: 28,
             boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
           }}
@@ -249,7 +252,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                <h2 style={{ margin: 0, fontSize: 20 }}>Order #{currentOrder.id}</h2>
+                <h2 style={{ margin: 0, fontSize: 20, color: isDark ? '#f5f2ee' : '#2b2725' }}>Order #{currentOrder.id}</h2>
                 <span
                   style={{
                     fontSize: 10,
@@ -263,7 +266,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                   Payment: {currentOrder.paymentStatus}
                 </span>
               </div>
-              <span style={{ fontSize: 12, color: '#78716c' }}>
+              <span style={{ fontSize: 12, color: isDark ? '#a8a09a' : '#78716c' }}>
                 Placed on {new Date(currentOrder.createdAt).toLocaleDateString()} at{' '}
                 {new Date(currentOrder.createdAt).toLocaleTimeString()}
               </span>
@@ -290,7 +293,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                 left: 36,
                 right: 36,
                 height: 4,
-                background: '#e5e7eb',
+                background: isDark ? '#362c26' : '#e5e7eb',
                 zIndex: 1,
               }}
             >
@@ -334,9 +337,9 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                         width: 48,
                         height: 48,
                         borderRadius: '50%',
-                        background: isPassed ? '#c92722' : '#ffffff',
-                        border: isPassed ? '3px solid #c92722' : '3px solid #d1d5db',
-                        color: isPassed ? '#ffffff' : '#9ca3af',
+                        background: isPassed ? '#c92722' : (isDark ? '#261f1c' : '#ffffff'),
+                        border: isPassed ? '3px solid #c92722' : (isDark ? '3px solid #443730' : '3px solid #d1d5db'),
+                        color: isPassed ? '#ffffff' : (isDark ? '#8a8078' : '#9ca3af'),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -351,7 +354,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                       style={{
                         marginTop: 10,
                         fontSize: 12,
-                        color: isPassed ? '#1f2937' : '#9ca3af',
+                        color: isPassed ? (isDark ? '#f5f2ee' : '#1f2937') : (isDark ? '#8a8078' : '#9ca3af'),
                         fontWeight: isCurrent ? 800 : 600,
                       }}
                     >
@@ -364,7 +367,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                           fontSize: 9,
                           fontWeight: 700,
                           color: '#c92722',
-                          background: '#fee2e2',
+                          background: isDark ? '#3d1615' : '#fee2e2',
                           padding: '2px 6px',
                           borderRadius: 4,
                           marginTop: 4,
@@ -384,8 +387,8 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
             style={{
               padding: '16px 20px',
               borderRadius: 12,
-              background: '#faf8f6',
-              border: '1px solid #e7e2de',
+              background: isDark ? '#241d1a' : '#faf8f6',
+              border: isDark ? '1px solid #382e28' : '1px solid #e7e2de',
               marginBottom: 24,
               display: 'flex',
               alignItems: 'center',
@@ -397,7 +400,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                 width: 44,
                 height: 44,
                 borderRadius: '50%',
-                background: '#fee2e2',
+                background: isDark ? '#3d1615' : '#fee2e2',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -407,10 +410,10 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
               <ChefHat size={22} />
             </div>
             <div>
-              <b style={{ fontSize: 14, color: '#2b2725' }}>
+              <b style={{ fontSize: 14, color: isDark ? '#f5f2ee' : '#2b2725' }}>
                 {STATUS_STEPS[currentStepIdx]?.label || currentOrder.status}
               </b>
-              <p style={{ margin: '2px 0 0', fontSize: 12, color: '#736d68' }}>
+              <p style={{ margin: '2px 0 0', fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>
                 {STATUS_STEPS[currentStepIdx]?.description ||
                   'The restaurant is processing your pizza order.'}
               </p>
@@ -419,23 +422,23 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
 
           {/* Delivery & Destination Details */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
-            <div style={{ background: '#faf9f7', padding: 14, borderRadius: 10, border: '1px solid #e8e3df' }}>
-              <span style={{ fontSize: 11, color: '#888', display: 'block', marginBottom: 4 }}>
+            <div style={{ background: isDark ? '#221c19' : '#faf9f7', padding: 14, borderRadius: 10, border: isDark ? '1px solid #362c26' : '1px solid #e8e3df' }}>
+              <span style={{ fontSize: 11, color: isDark ? '#9e958e' : '#888', display: 'block', marginBottom: 4 }}>
                 Delivery Address
               </span>
-              <b style={{ fontSize: 12, color: '#2b2725', lineHeight: 1.4, display: 'block' }}>
+              <b style={{ fontSize: 12, color: isDark ? '#f5f2ee' : '#2b2725', lineHeight: 1.4, display: 'block' }}>
                 {currentOrder.deliveryAddress}
               </b>
-              <span style={{ fontSize: 11, color: '#666', marginTop: 4, display: 'block' }}>
+              <span style={{ fontSize: 11, color: isDark ? '#8a8078' : '#666', marginTop: 4, display: 'block' }}>
                 Contact: {currentOrder.customerPhone}
               </span>
             </div>
 
-            <div style={{ background: '#faf9f7', padding: 14, borderRadius: 10, border: '1px solid #e8e3df' }}>
-              <span style={{ fontSize: 11, color: '#888', display: 'block', marginBottom: 4 }}>
+            <div style={{ background: isDark ? '#221c19' : '#faf9f7', padding: 14, borderRadius: 10, border: isDark ? '1px solid #362c26' : '1px solid #e8e3df' }}>
+              <span style={{ fontSize: 11, color: isDark ? '#9e958e' : '#888', display: 'block', marginBottom: 4 }}>
                 Items Ordered
               </span>
-              <div style={{ fontSize: 12, color: '#2b2725' }}>
+              <div style={{ fontSize: 12, color: isDark ? '#f5f2ee' : '#2b2725' }}>
                 {currentOrder.items.map((i) => (
                   <div key={i.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6, gap: 8 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
@@ -462,7 +465,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
 
           {/* Real-time Status Transition History */}
           <div>
-            <h4 style={{ margin: '0 0 10px', fontSize: 13, color: '#444' }}>Status Log &amp; Kitchen Notes</h4>
+            <h4 style={{ margin: '0 0 10px', fontSize: 13, color: isDark ? '#d4cec9' : '#444' }}>Status Log &amp; Kitchen Notes</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {currentOrder.statusHistory.map((h, i) => (
                 <div
@@ -473,17 +476,17 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                     justifyContent: 'space-between',
                     padding: '8px 12px',
                     borderRadius: 6,
-                    background: '#ffffff',
-                    border: '1px solid #ebe6e1',
+                    background: isDark ? '#221c19' : '#ffffff',
+                    border: isDark ? '1px solid #362c26' : '1px solid #ebe6e1',
                     fontSize: 11,
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#c92722' }} />
-                    <b style={{ color: '#2b2725' }}>{h.status}</b>
-                    {h.note && <span style={{ color: '#666' }}>&mdash; {h.note}</span>}
+                    <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>{h.status}</b>
+                    {h.note && <span style={{ color: isDark ? '#a8a09a' : '#666' }}>&mdash; {h.note}</span>}
                   </div>
-                  <span style={{ color: '#888' }}>
+                  <span style={{ color: isDark ? '#8a8078' : '#888' }}>
                     {new Date(h.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                   </span>
                 </div>
