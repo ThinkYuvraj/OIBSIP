@@ -203,8 +203,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
               style={{
                 padding: '10px 8px',
                 borderRadius: 8,
-                border: method === 'card' ? '2px solid #0284c7' : '1px solid #e2e8f0',
-                background: method === 'card' ? '#f0f9ff' : '#fff',
+                border: method === 'card' ? '2px solid #0284c7' : isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
+                background: method === 'card' ? (isDark ? '#14293d' : '#f0f9ff') : (isDark ? '#221b18' : '#fff'),
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -212,8 +212,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
                 cursor: 'pointer',
               }}
             >
-              <CreditCard size={18} color={method === 'card' ? '#0284c7' : '#64748b'} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'card' ? '#0369a1' : '#475569' }}>
+              <CreditCard size={18} color={method === 'card' ? '#38bdf8' : (isDark ? '#a8a09a' : '#64748b')} />
+              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'card' ? (isDark ? '#38bdf8' : '#0369a1') : (isDark ? '#a8a09a' : '#475569') }}>
                 Cards
               </span>
             </button>
@@ -223,8 +223,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
               style={{
                 padding: '10px 8px',
                 borderRadius: 8,
-                border: method === 'upi' ? '2px solid #0284c7' : '1px solid #e2e8f0',
-                background: method === 'upi' ? '#f0f9ff' : '#fff',
+                border: method === 'upi' ? '2px solid #0284c7' : isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
+                background: method === 'upi' ? (isDark ? '#14293d' : '#f0f9ff') : (isDark ? '#221b18' : '#fff'),
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -232,8 +232,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
                 cursor: 'pointer',
               }}
             >
-              <Smartphone size={18} color={method === 'upi' ? '#0284c7' : '#64748b'} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'upi' ? '#0369a1' : '#475569' }}>
+              <Smartphone size={18} color={method === 'upi' ? '#38bdf8' : (isDark ? '#a8a09a' : '#64748b')} />
+              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'upi' ? (isDark ? '#38bdf8' : '#0369a1') : (isDark ? '#a8a09a' : '#475569') }}>
                 UPI / QR
               </span>
             </button>
@@ -243,8 +243,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
               style={{
                 padding: '10px 8px',
                 borderRadius: 8,
-                border: method === 'netbanking' ? '2px solid #0284c7' : '1px solid #e2e8f0',
-                background: method === 'netbanking' ? '#f0f9ff' : '#fff',
+                border: method === 'netbanking' ? '2px solid #0284c7' : isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
+                background: method === 'netbanking' ? (isDark ? '#14293d' : '#f0f9ff') : (isDark ? '#221b18' : '#fff'),
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -252,8 +252,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
                 cursor: 'pointer',
               }}
             >
-              <Building2 size={18} color={method === 'netbanking' ? '#0284c7' : '#64748b'} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'netbanking' ? '#0369a1' : '#475569' }}>
+              <Building2 size={18} color={method === 'netbanking' ? '#38bdf8' : (isDark ? '#a8a09a' : '#64748b')} />
+              <span style={{ fontSize: 11, fontWeight: 600, color: method === 'netbanking' ? (isDark ? '#38bdf8' : '#0369a1') : (isDark ? '#a8a09a' : '#475569') }}>
                 NetBanking
               </span>
             </button>
@@ -263,37 +263,37 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
           {method === 'card' && (
             <div
               style={{
-                background: '#f8fafc',
+                background: isDark ? '#221b18' : '#f8fafc',
                 borderRadius: 10,
                 padding: 14,
-                border: '1px solid #e2e8f0',
+                border: isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
                 marginBottom: 16,
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8, fontSize: 11 }}>
-                <span style={{ color: '#64748b' }}>Test Card Number</span>
-                <span style={{ color: '#0369a1', fontWeight: 600 }}>Visa Sandbox</span>
+                <span style={{ color: isDark ? '#a8a09a' : '#64748b' }}>Test Card Number</span>
+                <span style={{ color: '#0284c7', fontWeight: 600 }}>Visa Sandbox</span>
               </div>
               <div
                 style={{
-                  background: '#ffffff',
+                  background: isDark ? '#191513' : '#ffffff',
                   padding: '8px 12px',
                   borderRadius: 6,
-                  border: '1px solid #cbd5e1',
+                  border: isDark ? '1px solid #3d332c' : '1px solid #cbd5e1',
                   fontFamily: 'monospace',
                   fontSize: 14,
                   fontWeight: 600,
                   letterSpacing: 2,
-                  color: '#1e293b',
+                  color: isDark ? '#f5f2ee' : '#1e293b',
                   marginBottom: 8,
                 }}
               >
                 4111 1111 1111 1111
               </div>
-              <div style={{ display: 'flex', gap: 10, fontSize: 11, color: '#64748b' }}>
-                <span>Exp: <b>12/28</b></span>
-                <span>CVV: <b>999</b></span>
-                <span>Name: <b>{order.customerName}</b></span>
+              <div style={{ display: 'flex', gap: 10, fontSize: 11, color: isDark ? '#a8a09a' : '#64748b' }}>
+                <span>Exp: <b style={{ color: isDark ? '#f5f2ee' : 'inherit' }}>12/28</b></span>
+                <span>CVV: <b style={{ color: isDark ? '#f5f2ee' : 'inherit' }}>999</b></span>
+                <span>Name: <b style={{ color: isDark ? '#f5f2ee' : 'inherit' }}>{order.customerName}</b></span>
               </div>
             </div>
           )}
@@ -301,18 +301,18 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
           {method === 'upi' && (
             <div
               style={{
-                background: '#f8fafc',
+                background: isDark ? '#221b18' : '#f8fafc',
                 borderRadius: 10,
                 padding: 14,
-                border: '1px solid #e2e8f0',
+                border: isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
                 marginBottom: 16,
                 textAlign: 'center',
               }}
             >
-              <p style={{ margin: '0 0 6px', fontSize: 12, color: '#334155' }}>
+              <p style={{ margin: '0 0 6px', fontSize: 12, color: isDark ? '#f5f2ee' : '#334155' }}>
                 UPI ID: <b>slicefire@razorpay</b>
               </p>
-              <span style={{ fontSize: 11, color: '#64748b' }}>
+              <span style={{ fontSize: 11, color: isDark ? '#a8a09a' : '#64748b' }}>
                 Instant auto-approval ready in test mode.
               </span>
             </div>
@@ -321,17 +321,17 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
           {method === 'netbanking' && (
             <div
               style={{
-                background: '#f8fafc',
+                background: isDark ? '#221b18' : '#f8fafc',
                 borderRadius: 10,
                 padding: 14,
-                border: '1px solid #e2e8f0',
+                border: isDark ? '1px solid #3d332c' : '1px solid #e2e8f0',
                 marginBottom: 16,
               }}
             >
-              <p style={{ margin: '0 0 6px', fontSize: 12, color: '#334155' }}>
+              <p style={{ margin: '0 0 6px', fontSize: 12, color: isDark ? '#f5f2ee' : '#334155' }}>
                 Simulating HDFC / ICICI / SBI Sandbox Bank
               </p>
-              <span style={{ fontSize: 11, color: '#64748b' }}>Click Success to authorize sandbox mock OTP.</span>
+              <span style={{ fontSize: 11, color: isDark ? '#a8a09a' : '#64748b' }}>Click Success to authorize sandbox mock OTP.</span>
             </div>
           )}
 
@@ -376,8 +376,8 @@ export const RazorpayModal: React.FC<RazorpayModalProps> = ({
                 padding: '9px',
                 borderRadius: 8,
                 background: 'transparent',
-                color: '#64748b',
-                border: '1px solid #cbd5e1',
+                color: isDark ? '#a8a09a' : '#64748b',
+                border: isDark ? '1px solid #3d332c' : '1px solid #cbd5e1',
                 fontSize: 11,
                 cursor: 'pointer',
               }}

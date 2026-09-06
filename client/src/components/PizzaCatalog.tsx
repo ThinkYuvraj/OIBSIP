@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { ArtisanPizza, CartItem } from '../types.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { Star, Flame, ShoppingBag, AlertCircle } from 'lucide-react';
 
 interface PizzaCatalogProps {
@@ -9,6 +10,7 @@ interface PizzaCatalogProps {
 }
 
 export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart, onOpenBuilder }) => {
+  const { isDark } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
@@ -30,8 +32,10 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
         <div>
           <span className="eyebrow">LEVEL 3 TASK &bull; ARTISAN PIZZA DASHBOARD</span>
-          <h1 style={{ margin: '6px 0 4px', fontSize: 28 }}>Handcrafted Wood-Fired Varieties</h1>
-          <p style={{ margin: 0, color: '#736d68', fontSize: 13 }}>
+          <h1 style={{ margin: '6px 0 4px', fontSize: 28, color: isDark ? '#f5f2ee' : '#2b2725' }}>
+            Handcrafted Wood-Fired Varieties
+          </h1>
+          <p style={{ margin: 0, color: isDark ? '#a8a09a' : '#736d68', fontSize: 13 }}>
             Prepared in our 900°F volcanic stone oven. Stock is dynamically validated before every bake.
           </p>
         </div>
@@ -58,27 +62,43 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            id={`menu-cat-filter-${cat.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-            onClick={() => setSelectedCategory(cat.id)}
-            style={{
-              padding: '8px 16px',
-              borderRadius: 999,
-              fontSize: 12,
-              fontWeight: 600,
-              border: selectedCategory === cat.id ? '1px solid #c92722' : '1px solid #e0d9d4',
-              background: selectedCategory === cat.id ? '#c92722' : '#ffffff',
-              color: selectedCategory === cat.id ? '#ffffff' : '#4a4441',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
+        {categories.map((cat) => {
+          const isSelected = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              id={`menu-cat-filter-${cat.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+              onClick={() => setSelectedCategory(cat.id)}
+              style={{
+                padding: '8px 16px',
+                borderRadius: 999,
+                fontSize: 12,
+                fontWeight: 600,
+                border: isSelected
+                  ? '1px solid #c92722'
+                  : isDark
+                  ? '1px solid #3d332c'
+                  : '1px solid #e0d9d4',
+                background: isSelected
+                  ? '#c92722'
+                  : isDark
+                  ? '#201a17'
+                  : '#ffffff',
+                color: isSelected
+                  ? '#ffffff'
+                  : isDark
+                  ? '#d4cec9'
+                  : '#4a4441',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                transition: 'all 0.2s ease',
+              }}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Pizza Grid */}
@@ -98,10 +118,10 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
               key={pizza.id}
               id={`pizza-card-${pizza.id}`}
               style={{
-                background: '#ffffff',
+                background: isDark ? '#201a17' : '#ffffff',
                 borderRadius: 16,
-                border: '1px solid #e5dfda',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                border: isDark ? '1px solid #382e28' : '1px solid #e5dfda',
+                boxShadow: isDark ? '0 4px 16px rgba(0,0,0,0.2)' : '0 4px 16px rgba(0,0,0,0.03)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
@@ -166,7 +186,8 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
                     position: 'absolute',
                     top: 12,
                     right: 12,
-                    background: 'rgba(255,255,255,0.92)',
+                    background: isDark ? 'rgba(30, 24, 21, 0.92)' : 'rgba(255,255,255,0.92)',
+                    color: isDark ? '#f5f2ee' : '#2b2725',
                     backdropFilter: 'blur(4px)',
                     padding: '4px 8px',
                     borderRadius: 999,
@@ -176,6 +197,7 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
                     alignItems: 'center',
                     gap: 3,
                     boxShadow: '0 2px 6px rgba(0,0,0,0.18)',
+                    border: isDark ? '1px solid #45372e' : 'none',
                   }}
                 >
                   <Star size={12} fill="#eab308" color="#eab308" />
@@ -205,11 +227,11 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
               {/* Pizza Details */}
               <div style={{ padding: '18px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6 }}>
-                  <h3 style={{ margin: 0, fontSize: 17, color: '#2b2725' }}>{pizza.name}</h3>
+                  <h3 style={{ margin: 0, fontSize: 17, color: isDark ? '#f5f2ee' : '#2b2725' }}>{pizza.name}</h3>
                   <b style={{ fontSize: 16, color: '#c92722' }}>${pizza.price.toFixed(2)}</b>
                 </div>
 
-                <p style={{ margin: '0 0 16px', fontSize: 12, color: '#736d68', lineHeight: 1.4, flex: 1 }}>
+                <p style={{ margin: '0 0 16px', fontSize: 12, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.4, flex: 1 }}>
                   {pizza.description}
                 </p>
 
@@ -217,9 +239,9 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
                 {!isAvailable && (
                   <div
                     style={{
-                      background: '#fef2f2',
-                      border: '1px solid #fecaca',
-                      color: '#991b1b',
+                      background: isDark ? '#3b1816' : '#fef2f2',
+                      border: isDark ? '1px solid #7f1d1d' : '1px solid #fecaca',
+                      color: isDark ? '#fca5a5' : '#991b1b',
                       padding: '6px 10px',
                       borderRadius: 6,
                       fontSize: 11,

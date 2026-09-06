@@ -218,7 +218,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
 
           {/* Itemized Order List */}
           <div>
-            <h3 style={{ margin: '0 0 8px', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <h3 style={{ margin: '0 0 8px', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6, color: isDark ? '#f5f2ee' : '#2b2725' }}>
               <ShoppingBag size={15} color="#c92722" /> Itemized Pies ({cartItems.reduce((a, b) => a + b.quantity, 0)})
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 180, overflowY: 'auto' }}>
@@ -227,8 +227,8 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                   key={item.id}
                   style={{
                     padding: '10px 14px',
-                    background: '#ffffff',
-                    border: '1px solid #e8e3df',
+                    background: isDark ? '#221b18' : '#ffffff',
+                    border: isDark ? '1px solid #352b25' : '1px solid #e8e3df',
                     borderRadius: 8,
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -248,7 +248,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                           borderRadius: 6,
                           objectFit: 'cover',
                           flexShrink: 0,
-                          border: '1px solid #e8e3df',
+                          border: isDark ? '1px solid #352b25' : '1px solid #e8e3df',
                         }}
                       />
                     ) : (
@@ -271,7 +271,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                     )}
                     <div style={{ minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <b style={{ fontSize: 13, color: '#2b2725' }}>{item.name}</b>
+                        <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>{item.name}</b>
                         {item.isCustom && (
                           <span
                             style={{
@@ -288,7 +288,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                         )}
                       </div>
                       {item.description && (
-                        <p style={{ margin: '2px 0 0', fontSize: 10, color: '#736d68', lineHeight: 1.3 }}>
+                        <p style={{ margin: '2px 0 0', fontSize: 10, color: isDark ? '#a8a09a' : '#736d68', lineHeight: 1.3 }}>
                           {item.description}
                         </p>
                       )}
@@ -296,7 +296,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                   </div>
 
                   <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-                    <span style={{ fontSize: 11, color: '#888' }}>
+                    <span style={{ fontSize: 11, color: isDark ? '#a8a09a' : '#888' }}>
                       {item.quantity} &times; ${item.price.toFixed(2)}
                     </span>
                     <b style={{ display: 'block', fontSize: 13, color: '#c92722' }}>
@@ -324,7 +324,9 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                       width: '100%',
                       padding: '8px 10px 8px 30px',
                       borderRadius: 6,
-                      border: '1px solid #d8d1cc',
+                      border: isDark ? '1px solid #3d332c' : '1px solid #d8d1cc',
+                      background: isDark ? '#191412' : '#fff',
+                      color: isDark ? '#f5f2ee' : '#2b2725',
                       fontSize: 12,
                       textTransform: 'uppercase',
                     }}
@@ -336,7 +338,7 @@ export const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({
                   style={{
                     padding: '8px 14px',
                     borderRadius: 6,
-                    background: '#443f3c',
+                    background: isDark ? '#3d332c' : '#443f3c',
                     color: '#fff',
                     border: 'none',
                     fontSize: 11,

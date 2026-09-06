@@ -79,8 +79,8 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
     return (
       <div style={{ maxWidth: 800, margin: '40px auto', textAlign: 'center', padding: '60px 20px' }}>
         <Clock size={40} color="#c92722" style={{ margin: '0 auto 12px' }} />
-        <h2 style={{ margin: '0 0 8px' }}>Live Order Tracker</h2>
-        <p style={{ color: '#736d68', fontSize: 14 }}>
+        <h2 style={{ margin: '0 0 8px', color: isDark ? '#f5f2ee' : '#2b2725' }}>Live Order Tracker</h2>
+        <p style={{ color: isDark ? '#a8a09a' : '#736d68', fontSize: 14 }}>
           Please sign in to your customer account to track your pizzas live from our oven to your door.
         </p>
       </div>
@@ -91,7 +91,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
     return (
       <div style={{ maxWidth: 800, margin: '40px auto', textAlign: 'center', padding: '60px 20px' }}>
         <RefreshCw size={32} className="animate-spin" color="#c92722" style={{ margin: '0 auto 12px' }} />
-        <p>Connecting to kitchen dispatch channel...</p>
+        <p style={{ color: isDark ? '#a8a09a' : '#574f4b' }}>Connecting to kitchen dispatch channel...</p>
       </div>
     );
   }
@@ -99,9 +99,9 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
   if (orders.length === 0) {
     return (
       <div style={{ maxWidth: 800, margin: '40px auto', textAlign: 'center', padding: '60px 20px' }}>
-        <Clock size={40} color="#a8a29e" style={{ margin: '0 auto 12px' }} />
-        <h2 style={{ margin: '0 0 8px' }}>No Orders Found</h2>
-        <p style={{ color: '#736d68', fontSize: 14 }}>
+        <Clock size={40} color={isDark ? '#78716c' : '#a8a29e'} style={{ margin: '0 auto 12px' }} />
+        <h2 style={{ margin: '0 0 8px', color: isDark ? '#f5f2ee' : '#2b2725' }}>No Orders Found</h2>
+        <p style={{ color: isDark ? '#a8a09a' : '#736d68', fontSize: 14 }}>
           You haven't placed an order yet. Select from our artisan menu or craft a custom pie!
         </p>
       </div>
@@ -122,21 +122,21 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <span className="eyebrow">REAL-TIME KITCHEN &bull; LEVEL 3 FEATURE</span>
-          <h1 style={{ margin: '6px 0 0', fontSize: 26 }}>Live Hearth &amp; Delivery Tracker</h1>
+          <h1 style={{ margin: '6px 0 0', fontSize: 26, color: isDark ? '#f5f2ee' : '#2b2725' }}>Live Hearth &amp; Delivery Tracker</h1>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span
             style={{
               fontSize: 11,
-              color: '#16a34a',
+              color: isDark ? '#4ade80' : '#16a34a',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              background: '#f0fdf4',
+              background: isDark ? '#14301d' : '#f0fdf4',
               padding: '6px 12px',
               borderRadius: 999,
-              border: '1px solid #bbf7d0',
+              border: isDark ? '1px solid #1e5e34' : '1px solid #bbf7d0',
               fontWeight: 600,
             }}
           >
@@ -145,7 +145,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                 width: 8,
                 height: 8,
                 borderRadius: '50%',
-                background: '#16a34a',
+                background: isDark ? '#4ade80' : '#16a34a',
                 animation: 'pulse 1.5s infinite',
               }}
             />
@@ -206,20 +206,20 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                       borderRadius: 999,
                       background:
                         o.status === 'Delivered'
-                          ? '#dcfce7'
+                          ? (isDark ? '#14301d' : '#dcfce7')
                           : o.status === 'Sent to Delivery'
-                          ? '#e0f2fe'
+                          ? (isDark ? '#11293b' : '#e0f2fe')
                           : o.status === 'In Kitchen'
-                          ? '#fef3c7'
-                          : '#fee2e2',
+                          ? (isDark ? '#3b280b' : '#fef3c7')
+                          : (isDark ? '#3b1414' : '#fee2e2'),
                       color:
                         o.status === 'Delivered'
-                          ? '#166534'
+                          ? (isDark ? '#4ade80' : '#166534')
                           : o.status === 'Sent to Delivery'
-                          ? '#0369a1'
+                          ? (isDark ? '#38bdf8' : '#0369a1')
                           : o.status === 'In Kitchen'
-                          ? '#92400e'
-                          : '#b91c1c',
+                          ? (isDark ? '#fbbf24' : '#92400e')
+                          : (isDark ? '#f87171' : '#b91c1c'),
                     }}
                   >
                     {o.status}
@@ -257,8 +257,8 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                   style={{
                     fontSize: 10,
                     fontWeight: 700,
-                    background: currentOrder.paymentStatus === 'PAID' ? '#dcfce7' : '#fee2e2',
-                    color: currentOrder.paymentStatus === 'PAID' ? '#166534' : '#b91c1c',
+                    background: currentOrder.paymentStatus === 'PAID' ? (isDark ? '#14301d' : '#dcfce7') : (isDark ? '#3b1414' : '#fee2e2'),
+                    color: currentOrder.paymentStatus === 'PAID' ? (isDark ? '#4ade80' : '#166534') : (isDark ? '#f87171' : '#b91c1c'),
                     padding: '2px 8px',
                     borderRadius: 4,
                   }}

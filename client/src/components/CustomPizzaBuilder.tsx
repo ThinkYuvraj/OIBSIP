@@ -161,9 +161,9 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                 borderRadius: 999,
                 fontSize: 11,
                 fontWeight: 700,
-                border: step === stepNum ? '1px solid #c92722' : '1px solid #e0d9d4',
-                background: step === stepNum ? '#c92722' : '#fff',
-                color: step === stepNum ? '#fff' : '#574f4b',
+                border: step === stepNum ? '1px solid #c92722' : isDark ? '1px solid #3d332c' : '1px solid #e0d9d4',
+                background: step === stepNum ? '#c92722' : isDark ? '#201a17' : '#fff',
+                color: step === stepNum ? '#fff' : isDark ? '#d4cec9' : '#574f4b',
                 cursor: 'pointer',
               }}
             >
@@ -182,9 +182,9 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
       {notification && (
         <div
           style={{
-            background: '#f0fdf4',
-            border: '1px solid #bbf7d0',
-            color: '#15803d',
+            background: isDark ? '#143120' : '#f0fdf4',
+            border: isDark ? '1px solid #166534' : '1px solid #bbf7d0',
+            color: isDark ? '#86efac' : '#15803d',
             padding: '12px 18px',
             borderRadius: 8,
             marginBottom: 20,
@@ -227,8 +227,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
           }}
         >
           <div style={{ textAlign: 'center', marginBottom: 16 }}>
-            <h3 style={{ margin: '0 0 4px', fontSize: 16 }}>Live Pie Simulator</h3>
-            <span style={{ fontSize: 11, color: '#888' }}>Visual recipe preview (12-inch Wood-Fired)</span>
+            <h3 style={{ margin: '0 0 4px', fontSize: 16, color: isDark ? '#f5f2ee' : '#2b2725' }}>Live Pie Simulator</h3>
+            <span style={{ fontSize: 11, color: isDark ? '#a8a09a' : '#888' }}>Visual recipe preview (12-inch Wood-Fired)</span>
           </div>
 
           {/* Canvas-style SVG Interactive Visual Pizza Simulator */}
@@ -377,35 +377,35 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
           </div>
 
           {/* Active Recipe Specs */}
-          <div style={{ background: '#faf8f6', borderRadius: 10, padding: 14, marginBottom: 18, fontSize: 12 }}>
+          <div style={{ background: isDark ? '#191513' : '#faf8f6', borderRadius: 10, padding: 14, marginBottom: 18, fontSize: 12 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <span style={{ color: '#736d68' }}>Base (Step 1):</span>
-              <b style={{ color: '#2b2725' }}>{selectedBase?.name} (${selectedBase?.price.toFixed(2)})</b>
+              <span style={{ color: isDark ? '#a8a09a' : '#736d68' }}>Base (Step 1):</span>
+              <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>{selectedBase?.name} (${selectedBase?.price.toFixed(2)})</b>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <span style={{ color: '#736d68' }}>Sauce (Step 2):</span>
-              <b style={{ color: '#2b2725' }}>
+              <span style={{ color: isDark ? '#a8a09a' : '#736d68' }}>Sauce (Step 2):</span>
+              <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>
                 {selectedSauce?.name} {selectedSauce && selectedSauce.price > 0 ? `(+$${selectedSauce.price.toFixed(2)})` : '(Incl)'}
               </b>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <span style={{ color: '#736d68' }}>Cheese (Step 3):</span>
-              <b style={{ color: '#2b2725' }}>
+              <span style={{ color: isDark ? '#a8a09a' : '#736d68' }}>Cheese (Step 3):</span>
+              <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>
                 {selectedCheese?.name} {selectedCheese && selectedCheese.price > 0 ? `(+$${selectedCheese.price.toFixed(2)})` : '(Incl)'}
               </b>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#736d68' }}>Veggies ({selectedVeggies.length}):</span>
-              <b style={{ color: '#2b2725' }}>
+              <span style={{ color: isDark ? '#a8a09a' : '#736d68' }}>Veggies ({selectedVeggies.length}):</span>
+              <b style={{ color: isDark ? '#f5f2ee' : '#2b2725' }}>
                 {selectedVeggies.length === 0 ? 'None' : `+$${veggiesPrice.toFixed(2)}`}
               </b>
             </div>
           </div>
 
           {/* Price & Action */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 10, borderTop: '1px solid #eee' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 10, borderTop: isDark ? '1px solid #332822' : '1px solid #eee' }}>
             <div>
-              <span style={{ fontSize: 11, color: '#888' }}>Calculated Total</span>
+              <span style={{ fontSize: 11, color: isDark ? '#a8a09a' : '#888' }}>Calculated Total</span>
               <h2 style={{ margin: '2px 0 0', fontSize: 24, color: '#c92722' }}>
                 ${totalPrice.toFixed(2)}
               </h2>
@@ -431,9 +431,9 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
         {/* Right: Step-by-Step Option Selectors */}
         <div
           style={{
-            background: '#fff',
+            background: isDark ? '#201a17' : '#fff',
             borderRadius: 16,
-            border: '1px solid #e5dfda',
+            border: isDark ? '1px solid #3d332d' : '1px solid #e5dfda',
             padding: 28,
             boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
           }}
@@ -446,8 +446,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                   <span style={{ fontSize: 11, fontWeight: 700, color: '#c92722', textTransform: 'uppercase' }}>
                     Step 1 of 4
                   </span>
-                  <h2 style={{ margin: '4px 0', fontSize: 22 }}>Choose a Pizza Base (5 Options)</h2>
-                  <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>
+                  <h2 style={{ margin: '4px 0', fontSize: 22, color: isDark ? '#f5f2ee' : '#2b2725' }}>Choose a Pizza Base (5 Options)</h2>
+                  <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>
                     Every artisan crust is fermented for 48 hours for maximum digestibility.
                   </p>
                 </div>
@@ -467,8 +467,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       style={{
                         padding: '16px 20px',
                         borderRadius: 12,
-                        border: isSelected ? '2px solid #c92722' : '1px solid #e0d8d3',
-                        background: isSelected ? '#fffdfd' : isOutOfStock ? '#f5f5f4' : '#fff',
+                        border: isSelected ? '2px solid #c92722' : isDark ? '1px solid #3d332d' : '1px solid #e0d8d3',
+                        background: isSelected ? (isDark ? '#2e1c18' : '#fffdfd') : isOutOfStock ? (isDark ? '#191513' : '#f5f5f4') : (isDark ? '#221b18' : '#fff'),
                         opacity: isOutOfStock ? 0.6 : 1,
                         cursor: isOutOfStock ? 'not-allowed' : 'pointer',
                         display: 'flex',
@@ -480,7 +480,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                     >
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                          <b style={{ fontSize: 15, color: '#2b2725' }}>{base.name}</b>
+                          <b style={{ fontSize: 15, color: isDark ? '#f5f2ee' : '#2b2725' }}>{base.name}</b>
                           {base.badge && (
                             <span
                               style={{
@@ -517,8 +517,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                               style={{
                                 fontSize: 9,
                                 fontWeight: 700,
-                                background: '#f3f4f6',
-                                color: '#6b7280',
+                                background: isDark ? '#2e2723' : '#f3f4f6',
+                                color: isDark ? '#a8a09a' : '#6b7280',
                                 padding: '2px 8px',
                                 borderRadius: 999,
                               }}
@@ -527,11 +527,11 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             </span>
                           )}
                         </div>
-                        <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{base.description}</p>
+                        <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>{base.description}</p>
                       </div>
 
                       <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
-                        <span style={{ fontSize: 16, fontWeight: 700, color: '#2b2725' }}>
+                        <span style={{ fontSize: 16, fontWeight: 700, color: isDark ? '#f5f2ee' : '#2b2725' }}>
                           ${base.price.toFixed(2)}
                         </span>
                         <div
@@ -539,7 +539,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             width: 22,
                             height: 22,
                             borderRadius: '50%',
-                            border: isSelected ? '2px solid #c92722' : '2px solid #ccc',
+                            border: isSelected ? '2px solid #c92722' : isDark ? '2px solid #54463d' : '2px solid #ccc',
                             background: isSelected ? '#c92722' : 'transparent',
                             display: 'flex',
                             alignItems: 'center',
@@ -576,8 +576,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                   <span style={{ fontSize: 11, fontWeight: 700, color: '#c92722', textTransform: 'uppercase' }}>
                     Step 2 of 4
                   </span>
-                  <h2 style={{ margin: '4px 0', fontSize: 22 }}>Choose a Handcrafted Sauce (5 Options)</h2>
-                  <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>
+                  <h2 style={{ margin: '4px 0', fontSize: 22, color: isDark ? '#f5f2ee' : '#2b2725' }}>Choose a Handcrafted Sauce (5 Options)</h2>
+                  <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>
                     Slow-simmered daily in copper cauldrons.
                   </p>
                 </div>
@@ -597,8 +597,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       style={{
                         padding: '16px 20px',
                         borderRadius: 12,
-                        border: isSelected ? '2px solid #c92722' : '1px solid #e0d8d3',
-                        background: isSelected ? '#fffdfd' : isOutOfStock ? '#f5f5f4' : '#fff',
+                        border: isSelected ? '2px solid #c92722' : isDark ? '1px solid #3d332d' : '1px solid #e0d8d3',
+                        background: isSelected ? (isDark ? '#2e1c18' : '#fffdfd') : isOutOfStock ? (isDark ? '#191513' : '#f5f5f4') : (isDark ? '#221b18' : '#fff'),
                         opacity: isOutOfStock ? 0.6 : 1,
                         cursor: isOutOfStock ? 'not-allowed' : 'pointer',
                         display: 'flex',
@@ -609,7 +609,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                     >
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                          <b style={{ fontSize: 15, color: '#2b2725' }}>{sauce.name}</b>
+                          <b style={{ fontSize: 15, color: isDark ? '#f5f2ee' : '#2b2725' }}>{sauce.name}</b>
                           {sauce.badge && (
                             <span
                               style={{
@@ -639,11 +639,11 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             </span>
                           )}
                         </div>
-                        <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{sauce.description}</p>
+                        <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>{sauce.description}</p>
                       </div>
 
                       <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: '#2b2725' }}>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: isDark ? '#f5f2ee' : '#2b2725' }}>
                           {sauce.price > 0 ? `+$${sauce.price.toFixed(2)}` : 'Included'}
                         </span>
                         <div
@@ -651,7 +651,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             width: 22,
                             height: 22,
                             borderRadius: '50%',
-                            border: isSelected ? '2px solid #c92722' : '2px solid #ccc',
+                            border: isSelected ? '2px solid #c92722' : isDark ? '2px solid #54463d' : '2px solid #ccc',
                             background: isSelected ? '#c92722' : 'transparent',
                             display: 'flex',
                             alignItems: 'center',
@@ -671,11 +671,12 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                 <button
                   onClick={() => setStep(1)}
                   style={{
-                    background: 'none',
-                    border: '1px solid #ccc',
+                    background: isDark ? '#221b18' : 'none',
+                    border: isDark ? '1px solid #4a3e35' : '1px solid #ccc',
                     borderRadius: 999,
                     padding: '10px 20px',
                     fontSize: 12,
+                    color: isDark ? '#d4cec9' : '#4a4441',
                     cursor: 'pointer',
                   }}
                 >
@@ -701,8 +702,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                   <span style={{ fontSize: 11, fontWeight: 700, color: '#c92722', textTransform: 'uppercase' }}>
                     Step 3 of 4
                   </span>
-                  <h2 style={{ margin: '4px 0', fontSize: 22 }}>Choose a Cheese Type</h2>
-                  <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>
+                  <h2 style={{ margin: '4px 0', fontSize: 22, color: isDark ? '#f5f2ee' : '#2b2725' }}>Choose a Cheese Type</h2>
+                  <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>
                     Selected for delicate melt and authentic wood-char blistering.
                   </p>
                 </div>
@@ -722,8 +723,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       style={{
                         padding: '16px 20px',
                         borderRadius: 12,
-                        border: isSelected ? '2px solid #c92722' : '1px solid #e0d8d3',
-                        background: isSelected ? '#fffdfd' : isOutOfStock ? '#f5f5f4' : '#fff',
+                        border: isSelected ? '2px solid #c92722' : isDark ? '1px solid #3d332d' : '1px solid #e0d8d3',
+                        background: isSelected ? (isDark ? '#2e1c18' : '#fffdfd') : isOutOfStock ? (isDark ? '#191513' : '#f5f5f4') : (isDark ? '#221b18' : '#fff'),
                         opacity: isOutOfStock ? 0.6 : 1,
                         cursor: isOutOfStock ? 'not-allowed' : 'pointer',
                         display: 'flex',
@@ -734,7 +735,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                     >
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                          <b style={{ fontSize: 15, color: '#2b2725' }}>{cheese.name}</b>
+                          <b style={{ fontSize: 15, color: isDark ? '#f5f2ee' : '#2b2725' }}>{cheese.name}</b>
                           {cheese.badge && (
                             <span
                               style={{
@@ -764,11 +765,11 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             </span>
                           )}
                         </div>
-                        <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{cheese.description}</p>
+                        <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>{cheese.description}</p>
                       </div>
 
                       <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: '#2b2725' }}>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: isDark ? '#f5f2ee' : '#2b2725' }}>
                           {cheese.price > 0 ? `+$${cheese.price.toFixed(2)}` : 'Included'}
                         </span>
                         <div
@@ -776,7 +777,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                             width: 22,
                             height: 22,
                             borderRadius: '50%',
-                            border: isSelected ? '2px solid #c92722' : '2px solid #ccc',
+                            border: isSelected ? '2px solid #c92722' : isDark ? '2px solid #54463d' : '2px solid #ccc',
                             background: isSelected ? '#c92722' : 'transparent',
                             display: 'flex',
                             alignItems: 'center',
@@ -796,11 +797,12 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                 <button
                   onClick={() => setStep(2)}
                   style={{
-                    background: 'none',
-                    border: '1px solid #ccc',
+                    background: isDark ? '#221b18' : 'none',
+                    border: isDark ? '1px solid #4a3e35' : '1px solid #ccc',
                     borderRadius: 999,
                     padding: '10px 20px',
                     fontSize: 12,
+                    color: isDark ? '#d4cec9' : '#4a4441',
                     cursor: 'pointer',
                   }}
                 >
@@ -826,8 +828,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                   <span style={{ fontSize: 11, fontWeight: 700, color: '#c92722', textTransform: 'uppercase' }}>
                     Step 4 of 4
                   </span>
-                  <h2 style={{ margin: '4px 0', fontSize: 22 }}>Select Vegetables (Multiple Select)</h2>
-                  <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>
+                  <h2 style={{ margin: '4px 0', fontSize: 22, color: isDark ? '#f5f2ee' : '#2b2725' }}>Select Vegetables (Multiple Select)</h2>
+                  <p style={{ margin: 0, fontSize: 12, color: isDark ? '#a8a09a' : '#736d68' }}>
                     Pick as many fresh, farm-direct toppings as you desire (up to 8 toppings).
                   </p>
                 </div>
@@ -866,8 +868,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       style={{
                         padding: '12px 14px',
                         borderRadius: 10,
-                        border: isSelected ? '2px solid #c92722' : '1px solid #e3deda',
-                        background: isSelected ? '#fffdfd' : isOutOfStock ? '#f5f5f4' : '#fff',
+                        border: isSelected ? '2px solid #c92722' : isDark ? '1px solid #3d332d' : '1px solid #e3deda',
+                        background: isSelected ? (isDark ? '#2e1c18' : '#fffdfd') : isOutOfStock ? (isDark ? '#191513' : '#f5f5f4') : (isDark ? '#221b18' : '#fff'),
                         opacity: isOutOfStock ? 0.55 : 1,
                         cursor: isOutOfStock ? 'not-allowed' : 'pointer',
                         display: 'flex',
@@ -878,13 +880,13 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <b style={{ fontSize: 13, color: '#2b2725' }}>{veg.name}</b>
+                        <b style={{ fontSize: 13, color: isDark ? '#f5f2ee' : '#2b2725' }}>{veg.name}</b>
                         <div
                           style={{
                             width: 18,
                             height: 18,
                             borderRadius: 4,
-                            border: isSelected ? '2px solid #c92722' : '2px solid #ccc',
+                            border: isSelected ? '2px solid #c92722' : isDark ? '2px solid #54463d' : '2px solid #ccc',
                             background: isSelected ? '#c92722' : 'transparent',
                             display: 'flex',
                             alignItems: 'center',
@@ -906,7 +908,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                           </span>
                         )}
                         {isOutOfStock && (
-                          <span style={{ fontSize: 9, color: '#78716c', fontWeight: 600 }}>
+                          <span style={{ fontSize: 9, color: isDark ? '#a8a09a' : '#78716c', fontWeight: 600 }}>
                             Out of stock
                           </span>
                         )}
@@ -920,11 +922,12 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                 <button
                   onClick={() => setStep(3)}
                   style={{
-                    background: 'none',
-                    border: '1px solid #ccc',
+                    background: isDark ? '#221b18' : 'none',
+                    border: isDark ? '1px solid #4a3e35' : '1px solid #ccc',
                     borderRadius: 999,
                     padding: '10px 20px',
                     fontSize: 12,
+                    color: isDark ? '#d4cec9' : '#4a4441',
                     cursor: 'pointer',
                   }}
                 >
