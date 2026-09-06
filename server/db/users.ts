@@ -22,8 +22,7 @@ export async function getOrCreateUser(uid: string, email: string, name?: string,
 
     return result[0];
   } catch (error) {
-    console.error('Failed to get or create user:', error);
-    // Fallback: try finding by uid
+    console.warn('[DB users] Sync attempt note:', error);
     try {
       const existing = await db.select().from(users).where(eq(users.uid, uid)).limit(1);
       if (existing.length > 0) {
@@ -32,6 +31,6 @@ export async function getOrCreateUser(uid: string, email: string, name?: string,
     } catch {
       // ignore
     }
-    throw new Error('Failed to synchronize user in database.', { cause: error });
+    return null;
   }
 }

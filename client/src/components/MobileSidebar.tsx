@@ -15,6 +15,7 @@ import {
   ChefHat,
   ChevronRight,
   LogIn,
+  Layers,
 } from 'lucide-react';
 
 interface MobileSidebarProps {
@@ -26,6 +27,7 @@ interface MobileSidebarProps {
   openCart: () => void;
   openAuth: () => void;
   openAdminAuth: () => void;
+  openArchitecture?: () => void;
   activeOrderCount: number;
 }
 
@@ -38,6 +40,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
   openCart,
   openAuth,
   openAdminAuth,
+  openArchitecture,
   activeOrderCount,
 }) => {
   const { user, logout, isAdmin } = useAuth();
@@ -536,6 +539,37 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <ShieldCheck size={16} />
                 <span>Admin Operations Portal</span>
+              </div>
+              <ChevronRight size={14} />
+            </button>
+          )}
+
+          {openArchitecture && (
+            <button
+              id="mobile-nav-architecture-btn"
+              onClick={() => {
+                onClose();
+                openArchitecture();
+              }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '10px 14px',
+                borderRadius: 10,
+                border: isDark ? '1px solid rgba(56, 189, 248, 0.25)' : '1px solid rgba(14, 165, 233, 0.2)',
+                background: isDark ? 'rgba(14, 165, 233, 0.1)' : 'rgba(14, 165, 233, 0.05)',
+                color: isDark ? '#38bdf8' : '#0284c7',
+                fontSize: 12,
+                fontWeight: 700,
+                cursor: 'pointer',
+                textAlign: 'left',
+                marginTop: 6,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <Layers size={16} />
+                <span>Full-Stack Architecture</span>
               </div>
               <ChevronRight size={14} />
             </button>

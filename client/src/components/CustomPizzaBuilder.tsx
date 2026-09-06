@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { InventoryItem, CartItem } from '../types.js';
 import { api } from '../api/client.js';
+import { useTheme } from '../context/ThemeContext.js';
 import { Check, Flame, AlertCircle, ShoppingBag, Sparkles } from 'lucide-react';
 
 interface CustomPizzaBuilderProps {
@@ -9,6 +10,7 @@ interface CustomPizzaBuilderProps {
 }
 
 export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToCart, onGoToCart }) => {
+  const { isDark } = useTheme();
   const [step, setStep] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
 

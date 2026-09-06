@@ -10,7 +10,7 @@ import {
   logRbacEvent,
 } from '../rbac.js';
 
-import { getDbStatus } from '../../src/db/index.ts';
+import { getDbStatus } from '../db/index.ts';
 
 const router = Router();
 

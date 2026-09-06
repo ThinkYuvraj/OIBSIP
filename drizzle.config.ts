@@ -15,7 +15,7 @@ const isSupabase = databaseUrl.includes("supabase.co") || sqlHost.includes("supa
 const hasValidUrl = Boolean(databaseUrl) && !databaseUrl.includes("[YOUR-PASSWORD]");
 
 export default defineConfig({
-  schema: "./src/db/schema.ts",
+  schema: "./server/db/schema.ts",
   out: "./drizzle",
   dialect: "postgresql",
   schemaFilter: ["public"],

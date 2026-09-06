@@ -12,6 +12,7 @@ import {
   Sun,
   Moon,
   Menu,
+  Layers,
 } from 'lucide-react';
 import { MobileSidebar } from './MobileSidebar.js';
 
@@ -22,6 +23,7 @@ interface NavbarProps {
   openCart: () => void;
   openAuth: () => void;
   openAdminAuth: () => void;
+  openArchitecture: () => void;
   activeOrderCount: number;
 }
 
@@ -32,6 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   openCart,
   openAuth,
   openAdminAuth,
+  openArchitecture,
   activeOrderCount,
 }) => {
   const { user, logout, isAdmin } = useAuth();
@@ -172,6 +175,29 @@ export const Navbar: React.FC<NavbarProps> = ({
               <ShieldCheck size={12} /> Admin Portal
             </button>
           )}
+
+          <button
+            id="nav-architecture-btn"
+            onClick={openArchitecture}
+            title="Inspect Frontend & Backend Architecture"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 5,
+              background: isDark ? 'rgba(14, 165, 233, 0.12)' : 'rgba(14, 165, 233, 0.08)',
+              color: isDark ? '#38bdf8' : '#0284c7',
+              padding: '4px 10px',
+              borderRadius: 999,
+              fontWeight: 700,
+              fontSize: 11,
+              border: isDark ? '1px solid rgba(56, 189, 248, 0.35)' : '1px solid rgba(14, 165, 233, 0.25)',
+              whiteSpace: 'nowrap',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <Layers size={12} /> Architecture
+          </button>
         </nav>
 
         <div className="header-actions">
@@ -297,6 +323,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         openCart={openCart}
         openAuth={openAuth}
         openAdminAuth={openAdminAuth}
+        openArchitecture={openArchitecture}
         activeOrderCount={activeOrderCount}
       />
     </>

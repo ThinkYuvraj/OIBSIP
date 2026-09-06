@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { db, User } from '../db.js';
 import { generateToken, hashPassword, comparePassword, authenticateToken, AuthRequest } from '../auth.js';
 import { logRbacEvent, PORTS_CONFIG } from '../rbac.js';
-import { adminAuth } from '../../src/lib/firebase-admin.ts';
-import { getOrCreateUser } from '../../src/db/users.ts';
+import { adminAuth } from '../lib/firebaseAdmin.js';
+import { getOrCreateUser } from '../db/users.ts';
 
 const router = Router();
 

@@ -12,14 +12,16 @@ import { AuthModal } from './components/AuthModal.js';
 import { AdminLoginModal } from './components/AdminLoginModal.js';
 import { OrderSummaryModal } from './components/OrderSummaryModal.js';
 import { RazorpayModal } from './components/RazorpayModal.js';
+import { ArchitectureModal } from './components/ArchitectureModal.js';
 import type { ArtisanPizza, CartItem, Order } from './types.js';
 import { api } from './api/client.js';
-import { Flame, Pizza, ShieldCheck, Clock, RefreshCw } from 'lucide-react';
+import { Flame, Pizza, ShieldCheck, Clock, RefreshCw, Layers } from 'lucide-react';
 
 function MainApp() {
   const { user, isAdmin, updateUserTheme } = useAuth();
   const { theme, setTheme, isDark } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('home');
+  const [isArchModalOpen, setIsArchModalOpen] = useState<boolean>(false);
   const lastSyncedUserIdRef = React.useRef<string | null>(null);
 
   // Sync user database theme preference once on login / session recovery
@@ -178,6 +180,7 @@ function MainApp() {
           openCart={() => setIsCartOpen(true)}
           openAuth={() => setIsAuthOpen(true)}
           openAdminAuth={() => setIsAdminAuthOpen(true)}
+          openArchitecture={() => setIsArchModalOpen(true)}
           activeOrderCount={activeOrdersCount}
         />
 
@@ -512,6 +515,12 @@ function MainApp() {
           onPaymentSuccess={handlePaymentSuccess}
         />
 
+        {/* Full-Stack Architecture Modal */}
+        <ArchitectureModal
+          isOpen={isArchModalOpen}
+          onClose={() => setIsArchModalOpen(false)}
+        />
+
         {/* Footer */}
         <footer>
           <div>
@@ -523,6 +532,25 @@ function MainApp() {
             <div style={{ marginTop: 10, fontSize: 9, color: '#a8a29e' }}>
               Level 3 Task 1 &bull; Full-Stack Node.js, Express, React, Razorpay, Node-Cron
             </div>
+            <button
+              id="footer-arch-btn"
+              onClick={() => setIsArchModalOpen(true)}
+              style={{
+                marginTop: 8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 5,
+                background: 'transparent',
+                border: 'none',
+                padding: 0,
+                color: '#38bdf8',
+                fontSize: 11,
+                fontWeight: 600,
+                cursor: 'pointer',
+              }}
+            >
+              <Layers size={13} /> View System Architecture
+            </button>
           </div>
 
           <div>

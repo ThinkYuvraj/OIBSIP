@@ -2,7 +2,6 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 import * as schema from './schema.ts';
 
-// Add global connection pool caching to persist across hot-reloads
 declare global {
   var _postgresPool: Pool | undefined;
 }
@@ -59,7 +58,6 @@ export const getConnectionConfig = () => {
   };
 };
 
-// Function to auto-initialize tables on successful connection
 export async function initDatabaseTables(pool: Pool) {
   try {
     await pool.query(`
@@ -74,7 +72,6 @@ export async function initDatabaseTables(pool: Pool) {
       );
 
       ALTER TABLE users ADD COLUMN IF NOT EXISTS theme TEXT DEFAULT 'light' NOT NULL;
-
 
       CREATE TABLE IF NOT EXISTS inventory (
         id TEXT PRIMARY KEY,
@@ -132,28 +129,16 @@ export async function initDatabaseTables(pool: Pool) {
         status TEXT NOT NULL
       );
     `);
-    console.log('[Supabase / PostgreSQL] Schema tables verified and ready.');
-
-    // Check if initial data seeding is needed
-    const countRes = await pool.query('SELECT count(*)::int as count FROM inventory');
-    if (countRes.rows[0]?.count === 0) {
-      console.log('[Supabase / PostgreSQL] Inventory table is empty. Running initial catalog seed...');
-      const { seedDatabase } = await import('./seed.ts');
-      await seedDatabase();
-    }
+    console.log('[PostgreSQL / Drizzle] Backend schema tables verified and synchronized.');
   } catch (err: any) {
-    console.warn('[Supabase / PostgreSQL] Auto-initialization note:', err.message);
+    console.warn('[PostgreSQL / Drizzle] Schema verification note:', err.message);
   }
 }
 
-// Function to create or retrieve the connection pool
 export const createPool = (): Pool | undefined => {
   const config = getConnectionConfig();
 
   if (!config.canConnect) {
-    console.log(
-      `[Supabase / PostgreSQL] Configured for host '${config.sqlHost}' (port: ${config.sqlPort}, db: ${config.sqlDb}, user: ${config.sqlUser}). Awaiting database password in environment variables to establish live connection.`
-    );
     return undefined;
   }
 
@@ -181,25 +166,23 @@ export const createPool = (): Pool | undefined => {
         });
       }
 
-      // Prevent unhandled pool-level errors from crashing the application
       global._postgresPool.on('error', (err) => {
-        console.warn('[Supabase / PostgreSQL] Idle pool client notice:', err.message);
+        console.warn('[PostgreSQL Pool] Connection client notice:', err.message);
       });
 
-      // Asynchronously verify connection and initialize schema
       global._postgresPool
         .query('SELECT NOW()')
         .then(() => {
-          console.log(`[Supabase / PostgreSQL] Live connection established to ${config.sqlHost}:${config.sqlPort}/${config.sqlDb}`);
+          console.log(`[PostgreSQL Pool] Connected to ${config.sqlHost}:${config.sqlPort}/${config.sqlDb}`);
           if (global._postgresPool) {
             initDatabaseTables(global._postgresPool);
           }
         })
         .catch((err) => {
-          console.warn(`[Supabase / PostgreSQL] Connection attempt to ${config.sqlHost} note: ${err.message}. Local file store is operating as resilient primary.`);
+          console.warn(`[PostgreSQL Pool] Notice: ${err.message}. Local file store active.`);
         });
     } catch (err: any) {
-      console.warn('[Supabase / PostgreSQL] Pool initialization error:', err.message);
+      console.warn('[PostgreSQL Pool] Initialization error:', err.message);
       return undefined;
     }
   }
@@ -221,10 +204,10 @@ export const getDbStatus = (): DbConnectionInfo => {
     hasPassword: !config.isPlaceholderPassword || config.hasValidConnectionString,
     ssl: process.env.SQL_SSL !== 'false',
     message: poolActive
-      ? `Connected to Supabase PostgreSQL at ${config.sqlHost}:${config.sqlPort}/${config.sqlDb}`
+      ? `Connected to PostgreSQL at ${config.sqlHost}:${config.sqlPort}/${config.sqlDb}`
       : config.hasValidConnectionString || !config.isPlaceholderPassword
-      ? `Connecting to Supabase PostgreSQL at ${config.sqlHost}:${config.sqlPort}...`
-      : `Host '${config.sqlHost}' (port ${config.sqlPort}, db '${config.sqlDb}', user '${config.sqlUser}') configured. Provide password in Settings to connect.`,
+      ? `Connecting to PostgreSQL at ${config.sqlHost}:${config.sqlPort}...`
+      : `Host '${config.sqlHost}' (port ${config.sqlPort}, db '${config.sqlDb}') configured. Provide credentials to connect live.`,
   };
 };
 
@@ -236,7 +219,7 @@ try {
     dbInstance = drizzle(pool, { schema });
   }
 } catch {
-  console.warn('[Supabase / PostgreSQL] Initializing with resilient fallback proxy');
+  // Silent fallback
 }
 
 if (!dbInstance) {
@@ -267,7 +250,4 @@ if (!dbInstance) {
   });
 }
 
-// Export safe db instance
 export const db = dbInstance;
-
-

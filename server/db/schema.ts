@@ -1,16 +1,15 @@
 import { pgTable, serial, text, timestamp, integer, numeric, jsonb } from 'drizzle-orm/pg-core';
 
-// Users table (synced with Firebase Auth)
+// Users table (synced with Firebase Auth & local credentials)
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
-  uid: text('uid').notNull().unique(), // Firebase Auth UID
+  uid: text('uid').notNull().unique(), // Firebase Auth UID / local ID
   email: text('email').notNull(),
   name: text('name'),
   role: text('role').default('CUSTOMER').notNull(),
   theme: text('theme').default('light').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
 });
-
 
 // Inventory stock items table
 export const inventory = pgTable('inventory', {
@@ -61,7 +60,7 @@ export const orders = pgTable('orders', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// Email dispatch logs table
+// Email and cron notification logs table
 export const emailLogs = pgTable('email_logs', {
   id: text('id').primaryKey(),
   timestamp: timestamp('timestamp').defaultNow(),

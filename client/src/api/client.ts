@@ -203,6 +203,8 @@ export const api = {
   // Dual-Port & RBAC Diagnostics
   getPortsStatus: () => request<PortStatusResponse>('/ports-status'),
 
+  getArchitecture: () => request<any>('/architecture'),
+
   getDbStatus: () => request<{ status: string; db: any; timestamp: string }>('/db-status'),
 
   getRbacMatrix: () => request<RbacMatrixResponse>('/admin/rbac/matrix'),

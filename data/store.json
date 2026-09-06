@@ -7,7 +7,8 @@
       "passwordHash": "$2b$10$cG5ouwy/aW7jwPrVfAcOheQcNcK36xio16K2uNm2HcqRK0hd3IIEO",
       "role": "ADMIN",
       "isVerified": true,
-      "createdAt": "2026-09-03T20:19:47.882Z"
+      "createdAt": "2026-09-03T20:19:47.882Z",
+      "theme": "light"
     },
     {
       "id": "usr-customer-1",
@@ -16,7 +17,8 @@
       "passwordHash": "$2b$10$umTygnJm6Iy95cKMjFPUnOCHgcfaV1BDVJCh6UlTLQfBzMJh2Vwdm",
       "role": "CUSTOMER",
       "isVerified": true,
-      "createdAt": "2026-09-03T20:19:47.962Z"
+      "createdAt": "2026-09-03T20:19:47.962Z",
+      "theme": "dark"
     }
   ],
   "inventory": [
@@ -605,6 +607,306 @@
     }
   ],
   "emailLogs": [
+    {
+      "id": "alert-1788733156588-veg-4",
+      "timestamp": "2026-09-06T22:19:12.310Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788733156588-cheese-4",
+      "timestamp": "2026-09-06T22:19:12.310Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788733156588-sauce-3",
+      "timestamp": "2026-09-06T22:19:12.310Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788733156587-base-5",
+      "timestamp": "2026-09-06T22:19:12.310Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788733156587-base-1",
+      "timestamp": "2026-09-06T22:19:12.310Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788731804196-veg-4",
+      "timestamp": "2026-09-06T21:56:40.605Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788731804195-cheese-4",
+      "timestamp": "2026-09-06T21:56:40.605Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788731804195-sauce-3",
+      "timestamp": "2026-09-06T21:56:40.605Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788731804195-base-5",
+      "timestamp": "2026-09-06T21:56:40.605Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788731804194-base-1",
+      "timestamp": "2026-09-06T21:56:40.605Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788623404062-veg-4",
+      "timestamp": "2026-09-05T15:50:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788623404062-cheese-4",
+      "timestamp": "2026-09-05T15:50:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788623404061-sauce-3",
+      "timestamp": "2026-09-05T15:50:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788623404061-base-5",
+      "timestamp": "2026-09-05T15:50:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788623404060-base-1",
+      "timestamp": "2026-09-05T15:50:00.003Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788622202533-veg-4",
+      "timestamp": "2026-09-05T15:30:00.002Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788622202532-cheese-4",
+      "timestamp": "2026-09-05T15:30:00.002Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788622202531-sauce-3",
+      "timestamp": "2026-09-05T15:30:00.002Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788622202531-base-5",
+      "timestamp": "2026-09-05T15:30:00.002Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788622202529-base-1",
+      "timestamp": "2026-09-05T15:30:00.002Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788620852168-veg-4",
+      "timestamp": "2026-09-05T15:07:28.508Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788620852168-cheese-4",
+      "timestamp": "2026-09-05T15:07:28.508Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788620852168-sauce-3",
+      "timestamp": "2026-09-05T15:07:28.508Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788620852167-base-5",
+      "timestamp": "2026-09-05T15:07:28.508Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788620852166-base-1",
+      "timestamp": "2026-09-05T15:07:28.508Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788619287764-veg-4",
+      "timestamp": "2026-09-05T14:41:24.721Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Wild Button Mushrooms (17 cups left)",
+      "body": "Stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
+      "triggeredByItem": "Wild Button Mushrooms",
+      "currentStock": 17,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788619287764-cheese-4",
+      "timestamp": "2026-09-05T14:41:24.721Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Aged Sharp Smoked Cheddar (19 portions left)",
+      "body": "Stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
+      "triggeredByItem": "Aged Sharp Smoked Cheddar",
+      "currentStock": 19,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788619287763-sauce-3",
+      "timestamp": "2026-09-05T14:41:24.721Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Truffle Garlic Cream (14 ladles left)",
+      "body": "Stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
+      "triggeredByItem": "Truffle Garlic Cream",
+      "currentStock": 14,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788619287763-base-5",
+      "timestamp": "2026-09-05T14:41:24.721Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Gluten-Free Cauliflower Herb Crust (16 crusts left)",
+      "body": "Stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
+      "currentStock": 16,
+      "threshold": 20
+    },
+    {
+      "id": "alert-1788619287762-base-1",
+      "timestamp": "2026-09-05T14:41:24.721Z",
+      "recipient": "thinkyuvraj2@gmail.com",
+      "subject": "Low Stock Alert: Classic Thin Crust (17 crusts left)",
+      "body": "Stock warning for Classic Thin Crust: 17 crusts remaining (Threshold: 20 crusts)",
+      "triggeredByItem": "Classic Thin Crust",
+      "currentStock": 17,
+      "threshold": 20
+    },
     {
       "id": "alert-1788530066055-veg-4",
       "timestamp": "2026-09-04T13:54:23.192Z",
@@ -1304,311 +1606,11 @@
       "triggeredByItem": "Wild Button Mushrooms",
       "currentStock": 17,
       "threshold": 20
-    },
-    {
-      "id": "alert-1788528668651-veg-4",
-      "timestamp": "2026-09-04T13:31:02.435Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
-      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
-      "triggeredByItem": "Wild Button Mushrooms",
-      "currentStock": 17,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528668583-sauce-3",
-      "timestamp": "2026-09-04T13:30:59.555Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528668372-veg-4",
-      "timestamp": "2026-09-04T13:30:59.727Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
-      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
-      "triggeredByItem": "Wild Button Mushrooms",
-      "currentStock": 17,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528668361-sauce-3",
-      "timestamp": "2026-09-04T13:31:03.694Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528668233-veg-4",
-      "timestamp": "2026-09-04T13:31:00.398Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Wild Button Mushrooms (17 cups remaining)",
-      "body": "Low stock warning for Wild Button Mushrooms: 17 cups remaining (Threshold: 20 cups)",
-      "triggeredByItem": "Wild Button Mushrooms",
-      "currentStock": 17,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528668170-sauce-3",
-      "timestamp": "2026-09-04T13:31:02.264Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667859-sauce-3",
-      "timestamp": "2026-09-04T13:30:59.021Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667850-cheese-4",
-      "timestamp": "2026-09-04T13:31:02.062Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667834-sauce-3",
-      "timestamp": "2026-09-04T13:31:00.727Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667693-sauce-3",
-      "timestamp": "2026-09-04T13:31:02.793Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667568-cheese-4",
-      "timestamp": "2026-09-04T13:31:02.975Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667542-cheese-4",
-      "timestamp": "2026-09-04T13:31:00.573Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667540-cheese-4",
-      "timestamp": "2026-09-04T13:31:00.231Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667520-cheese-4",
-      "timestamp": "2026-09-04T13:30:58.593Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667431-sauce-3",
-      "timestamp": "2026-09-04T13:31:01.921Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667222-cheese-4",
-      "timestamp": "2026-09-04T13:31:00.398Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528667017-sauce-3",
-      "timestamp": "2026-09-04T13:31:01.240Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666979-cheese-4",
-      "timestamp": "2026-09-04T13:31:01.054Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666976-base-5",
-      "timestamp": "2026-09-04T13:31:03.694Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666898-cheese-4",
-      "timestamp": "2026-09-04T13:31:00.070Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666820-sauce-3",
-      "timestamp": "2026-09-04T13:30:59.391Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666798-cheese-4",
-      "timestamp": "2026-09-04T13:31:02.625Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666777-cheese-4",
-      "timestamp": "2026-09-04T13:31:02.435Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666706-cheese-4",
-      "timestamp": "2026-09-04T13:30:59.727Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666602-base-5",
-      "timestamp": "2026-09-04T13:31:03.910Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666557-base-5",
-      "timestamp": "2026-09-04T13:31:00.727Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Gluten-Free Cauliflower Herb Crust (16 crusts remaining)",
-      "body": "Low stock warning for Gluten-Free Cauliflower Herb Crust: 16 crusts remaining (Threshold: 20 crusts)",
-      "triggeredByItem": "Gluten-Free Cauliflower Herb Crust",
-      "currentStock": 16,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666440-cheese-4",
-      "timestamp": "2026-09-04T13:31:01.581Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Aged Sharp Smoked Cheddar (19 portions remaining)",
-      "body": "Low stock warning for Aged Sharp Smoked Cheddar: 19 portions remaining (Threshold: 20 portions)",
-      "triggeredByItem": "Aged Sharp Smoked Cheddar",
-      "currentStock": 19,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666369-sauce-3",
-      "timestamp": "2026-09-04T13:31:03.134Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666366-sauce-3",
-      "timestamp": "2026-09-04T13:31:02.975Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
-    },
-    {
-      "id": "alert-1788528666269-sauce-3",
-      "timestamp": "2026-09-04T13:30:58.593Z",
-      "recipient": "thinkyuvraj2@gmail.com",
-      "subject": "⚠️ URGENT: Low Stock Alert - Truffle Garlic Cream (14 ladles remaining)",
-      "body": "Low stock warning for Truffle Garlic Cream: 14 ladles remaining (Threshold: 20 ladles)",
-      "triggeredByItem": "Truffle Garlic Cream",
-      "currentStock": 14,
-      "threshold": 20
     }
   ],
   "cronStats": {
-    "lastRun": "2026-09-04T13:54:47.324Z",
-    "totalRuns": 92,
-    "lastAlertSent": "2026-09-04T13:54:23.192Z"
+    "lastRun": "2026-09-06T22:20:00.003Z",
+    "totalRuns": 113,
+    "lastAlertSent": "2026-09-06T22:19:12.310Z"
   }
 }

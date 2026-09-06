@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { adminAuth } from '../lib/firebase-admin.ts';
+import { adminAuth } from '../lib/firebaseAdmin.js';
 import { DecodedIdToken } from 'firebase-admin/auth';
 import { getOrCreateUser } from '../db/users.ts';
 
@@ -10,7 +10,7 @@ export interface AuthRequest extends Request {
   };
 }
 
-export const requireAuth = async (
+export const requireFirebaseAuth = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
@@ -26,12 +26,11 @@ export const requireAuth = async (
     const decodedToken = await adminAuth.verifyIdToken(token);
     req.user = decodedToken;
 
-    // Sync or ensure user exists in Cloud SQL
     if (decodedToken.uid && decodedToken.email) {
       try {
         await getOrCreateUser(decodedToken.uid, decodedToken.email, decodedToken.name);
       } catch (syncErr) {
-        console.warn('[Auth] Non-fatal user sync warning:', syncErr);
+        console.warn('[AuthMiddleware] User sync warning:', syncErr);
       }
     }
 
