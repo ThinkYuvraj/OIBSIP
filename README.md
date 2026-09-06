@@ -4,6 +4,16 @@ A production-grade, full-stack Neapolitan pizza delivery platform and automated 
 
 ---
 
+## Live Deployment
+
+### Frontend
+🌐 https://pizzadeliveryapp.vercel.app/
+
+### Backend API
+🔗 https://slice-and-fire-backend.onrender.com/
+
+---
+
 ## 📋 Table of Contents
 
 - [Key Features](#-key-features)
