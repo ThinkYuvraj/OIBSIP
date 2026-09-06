@@ -1,4 +1,4 @@
-# 🍕 Slice & Fire — Full-Stack Artisan Pizza & Kitchen Operations
+# 🍕 Slice & Fire —  Full-Stack E-Commerce Ordering Platform
 
 A production-grade, full-stack Neapolitan pizza delivery platform and automated kitchen operations system. Built with **React 18 / Vite**, **Express.js**, **TypeScript**, and **Node-Cron**, featuring real-time interactive pizza customization, automatic recipe inventory deduction, automated email alerting via **Nodemailer**, and an admin operations console.
 
