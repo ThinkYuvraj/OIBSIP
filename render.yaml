@@ -3,16 +3,57 @@ services:
     name: slice-and-fire-backend
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run build:server
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
         value: production
+      # Database
       - key: DATABASE_URL
         sync: false
+      - key: SQL_HOST
+        sync: false
+      - key: SQL_PORT
+        sync: false
+      - key: SQL_DB_NAME
+        sync: false
+      - key: SQL_USER
+        sync: false
+      - key: SQL_PASSWORD
+        sync: false
+      - key: SQL_ADMIN_USER
+        sync: false
+      - key: SQL_ADMIN_PASSWORD
+        sync: false
+      - key: SQL_SSL
+        sync: false
+      # Auth & Security
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL
         value: admin@sliceandfire.com
       - key: ADMIN_ALERT_EMAIL
         value: admin@sliceandfire.com
+      - key: FIREBASE_API_KEY
+        sync: false
+      # CORS — set to your Vercel frontend URL, e.g. https://your-app.vercel.app
+      - key: FRONTEND_URL
+        sync: false
+      # Payment Gateway (Razorpay)
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      # Email / SMTP Alerts
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
