@@ -47,7 +47,17 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
       </div>
 
       {/* Category Pills */}
-      <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 10, marginBottom: 24 }}>
+      <div
+        className="catalog-category-bar"
+        style={{
+          display: 'flex',
+          gap: 8,
+          overflowX: 'auto',
+          paddingBottom: 10,
+          marginBottom: 24,
+          WebkitOverflowScrolling: 'touch',
+        }}
+      >
         {categories.map((cat) => (
           <button
             key={cat.id}
@@ -63,6 +73,7 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
               color: selectedCategory === cat.id ? '#ffffff' : '#4a4441',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             {cat.label}
@@ -72,10 +83,11 @@ export const PizzaCatalog: React.FC<PizzaCatalogProps> = ({ pizzas, onAddToCart,
 
       {/* Pizza Grid */}
       <div
+        className="catalog-grid"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: 24,
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
+          gap: 20,
         }}
       >
         {filteredPizzas.map((pizza) => {

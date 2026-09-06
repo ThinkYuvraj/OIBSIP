@@ -248,6 +248,7 @@ export const AdminDashboard: React.FC = () => {
     <div id="admin-dashboard" style={{ maxWidth: 1240, margin: '0 auto', padding: '20px 0' }}>
       {/* Top Bar / Role Indicator */}
       <div
+        className="admin-header-banner"
         style={{
           background: '#1f1b19',
           color: '#fff',
@@ -306,7 +307,7 @@ export const AdminDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: 10 }}>
+        <div className="admin-header-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <button
             id="admin-check-now-btn"
             onClick={handleTriggerCheckNow}
@@ -369,9 +370,10 @@ export const AdminDashboard: React.FC = () => {
 
       {/* KPI Stats Row */}
       <div
+        className="admin-kpi-grid"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
           gap: 16,
           marginBottom: 24,
         }}
@@ -441,7 +443,18 @@ export const AdminDashboard: React.FC = () => {
 
 
       {/* Main Tab Controller */}
-      <div style={{ display: 'flex', gap: 10, borderBottom: '2px solid #e8e3df', marginBottom: 20, paddingBottom: 6 }}>
+      <div
+        className="admin-tab-bar"
+        style={{
+          display: 'flex',
+          gap: 10,
+          borderBottom: '2px solid #e8e3df',
+          marginBottom: 20,
+          paddingBottom: 6,
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+        }}
+      >
         <button
           id="admin-tab-orders"
           onClick={() => setActiveTab('orders')}
@@ -457,6 +470,8 @@ export const AdminDashboard: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: 6,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
           }}
         >
           <ShoppingBag size={16} /> Order Management Panel ({orders.length})
@@ -477,6 +492,8 @@ export const AdminDashboard: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: 6,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
           }}
         >
           <Package size={16} /> Inventory Dashboard &amp; Stock Controls ({inventory.length})
@@ -497,6 +514,8 @@ export const AdminDashboard: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: 6,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
           }}
         >
           <Mail size={16} /> Automated Email Outbox ({emailLogs.length})
@@ -517,6 +536,8 @@ export const AdminDashboard: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: 6,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
           }}
         >
           <ShieldAlert size={16} color={activeTab === 'rbac' ? '#ca8a04' : '#736d68'} /> Multi-Port &amp; RBAC Monitor ({rbacLogs.length})
@@ -651,7 +672,15 @@ export const AdminDashboard: React.FC = () => {
                   </div>
 
                   {/* Destination & Items breakdown */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'minmax(240px, 320px) 1fr', gap: 16, marginBottom: 16 }}>
+                  <div
+                    className="admin-order-details-grid"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'minmax(240px, 320px) 1fr',
+                      gap: 16,
+                      marginBottom: 16,
+                    }}
+                  >
                     <div style={{ background: '#faf8f6', padding: 12, borderRadius: 8, fontSize: 12 }}>
                       <span style={{ color: '#888', display: 'block', marginBottom: 2 }}>Destination Address:</span>
                       <b style={{ color: '#333' }}>{order.deliveryAddress}</b>
@@ -847,9 +876,10 @@ export const AdminDashboard: React.FC = () => {
 
           {/* Inventory Table / Grid */}
           <div
+            className="admin-inventory-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
               gap: 16,
             }}
           >

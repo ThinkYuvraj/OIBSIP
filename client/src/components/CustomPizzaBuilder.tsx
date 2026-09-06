@@ -266,8 +266,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
             <div
               id="pizza-sauce-layer"
               style={{
-                width: 218,
-                height: 218,
+                width: '84%',
+                height: '84%',
                 borderRadius: '50%',
                 background: getSauceColor(),
                 boxShadow: 'inset 0 0 10px rgba(0,0,0,0.3)',
@@ -282,8 +282,8 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
               <div
                 id="pizza-cheese-layer"
                 style={{
-                  width: 198,
-                  height: 198,
+                  width: '90%',
+                  height: '90%',
                   borderRadius: '50%',
                   background:
                     selectedCheese?.name.includes('Cheddar')
@@ -316,12 +316,12 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                 }}
               >
                 {selectedVeggies.map((veg, index) => {
-                  // Coordinate scatter algorithm
+                  // Percentage coordinate scatter algorithm for responsive canvas
                   const angles = [30, 85, 140, 195, 250, 310, 60, 160, 220, 290];
                   const angle = (angles[index % angles.length] * Math.PI) / 180;
-                  const radius = 55 + ((index * 17) % 35);
-                  const x = 109 + Math.cos(angle) * radius - 10;
-                  const y = 109 + Math.sin(angle) * radius - 10;
+                  const radiusPercent = 25 + ((index * 7) % 18);
+                  const xPercent = 50 + Math.cos(angle) * radiusPercent;
+                  const yPercent = 50 + Math.sin(angle) * radiusPercent;
 
                   let color = '#15803d';
                   let symbol = '🍃';
@@ -353,10 +353,10 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                       key={veg.id}
                       style={{
                         position: 'absolute',
-                        left: x,
-                        top: y,
-                        width: 22,
-                        height: 22,
+                        left: `calc(${xPercent}% - 10px)`,
+                        top: `calc(${yPercent}% - 10px)`,
+                        width: 20,
+                        height: 20,
                         borderRadius: '50%',
                         background: color,
                         color: '#fff',
@@ -530,7 +530,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                         <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{base.description}</p>
                       </div>
 
-                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14 }}>
+                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
                         <span style={{ fontSize: 16, fontWeight: 700, color: '#2b2725' }}>
                           ${base.price.toFixed(2)}
                         </span>
@@ -642,7 +642,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                         <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{sauce.description}</p>
                       </div>
 
-                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14 }}>
+                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
                         <span style={{ fontSize: 14, fontWeight: 700, color: '#2b2725' }}>
                           {sauce.price > 0 ? `+$${sauce.price.toFixed(2)}` : 'Included'}
                         </span>
@@ -767,7 +767,7 @@ export const CustomPizzaBuilder: React.FC<CustomPizzaBuilderProps> = ({ onAddToC
                         <p style={{ margin: 0, fontSize: 12, color: '#736d68' }}>{cheese.description}</p>
                       </div>
 
-                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14 }}>
+                      <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
                         <span style={{ fontSize: 14, fontWeight: 700, color: '#2b2725' }}>
                           {cheese.price > 0 ? `+$${cheese.price.toFixed(2)}` : 'Included'}
                         </span>

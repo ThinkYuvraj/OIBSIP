@@ -174,9 +174,9 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 340px) 1fr', gap: 24 }}>
+      <div className="tracker-main-grid">
         {/* Left: Orders history selector */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div className="tracker-orders-list" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <h3 style={{ margin: '0 0 4px', fontSize: 14, color: isDark ? '#a8a09a' : '#574f4b' }}>Your Orders ({orders.length})</h3>
 
           {orders.map((o) => {
@@ -284,9 +284,10 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
           </div>
 
           {/* STEP PROGRESS BAR: Order Received -> In Kitchen -> Sent to Delivery -> Delivered */}
-          <div style={{ marginBottom: 36, position: 'relative' }}>
+          <div className="tracker-stepper-container" style={{ marginBottom: 36, position: 'relative' }}>
             {/* Connecting Track Line */}
             <div
+              className="tracker-track-line"
               style={{
                 position: 'absolute',
                 top: 24,
@@ -309,6 +310,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
 
             {/* Stepper Nodes */}
             <div
+              className="tracker-stepper-nodes"
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -324,6 +326,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                 return (
                   <div
                     key={s.status}
+                    className="tracker-step-node"
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -333,6 +336,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                     }}
                   >
                     <div
+                      className="tracker-step-circle"
                       style={{
                         width: 48,
                         height: 48,
@@ -351,6 +355,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
                     </div>
 
                     <b
+                      className="tracker-step-label"
                       style={{
                         marginTop: 10,
                         fontSize: 12,
@@ -363,6 +368,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
 
                     {isCurrent && (
                       <span
+                        className="tracker-step-pill"
                         style={{
                           fontSize: 9,
                           fontWeight: 700,
@@ -421,7 +427,7 @@ export const OrderStatusTracker: React.FC<OrderStatusTrackerProps> = ({ onSelect
           </div>
 
           {/* Delivery & Destination Details */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
+          <div className="tracker-details-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
             <div style={{ background: isDark ? '#221c19' : '#faf9f7', padding: 14, borderRadius: 10, border: isDark ? '1px solid #362c26' : '1px solid #e8e3df' }}>
               <span style={{ fontSize: 11, color: isDark ? '#9e958e' : '#888', display: 'block', marginBottom: 4 }}>
                 Delivery Address
