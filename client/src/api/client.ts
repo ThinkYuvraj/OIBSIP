@@ -10,9 +10,27 @@ import type {
   RbacMatrixResponse,
 } from '../types.js';
 
-const API_BASE = (import.meta.env.VITE_API_URL
-  ? `${String(import.meta.env.VITE_API_URL).replace(/\/$/, '')}/api`
-  : '/api');
+function getApiBase(): string {
+  let customBase = (import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '').trim();
+  // Strip any accidental key prefix e.g. "VITE_API_BASE_URL=..." or "VITE_API_URL=..."
+  customBase = customBase.replace(/^(VITE_API_BASE_URL|VITE_API_URL)=\s*/i, '').trim();
+
+  // If in browser: inside Google AI Studio / Cloud Run preview (*.run.app) or local development,
+  // the full-stack Express API is already running directly in this container on the same port/origin.
+  // Using same-origin '/api' guarantees immediate responses with zero CORS friction or cold-start timeouts.
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host.includes('.run.app') || host === 'localhost' || host === '127.0.0.1') {
+      return '/api';
+    }
+  }
+
+  if (!customBase) return '/api';
+  const clean = customBase.replace(/\/+$/, '');
+  return clean.endsWith('/api') ? clean : `${clean}/api`;
+}
+
+const API_BASE = getApiBase();
 
 export function getStoredToken(): string | null {
   return localStorage.getItem('slice_fire_token');
@@ -37,22 +55,42 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers,
-  });
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
 
-  const data = await response.json().catch(() => ({}));
+  try {
+    const response = await fetch(`${API_BASE}${cleanEndpoint}`, {
+      ...options,
+      headers,
+    });
 
-  if (!response.ok) {
-    const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
-    const err = new Error(errorMsg) as any;
-    err.data = data;
-    err.status = response.status;
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
+      const err = new Error(errorMsg) as any;
+      err.data = data;
+      err.status = response.status;
+      throw err;
+    }
+
+    return data as T;
+  } catch (err: any) {
+    // If an external API_BASE fails to fetch (e.g. cold-start or network issue), attempt same-origin '/api'
+    if (API_BASE !== '/api') {
+      try {
+        const fallbackRes = await fetch(`/api${cleanEndpoint}`, {
+          ...options,
+          headers,
+        });
+        if (fallbackRes.ok) {
+          return (await fallbackRes.json()) as T;
+        }
+      } catch {
+        // Fallback also failed, propagate original error
+      }
+    }
     throw err;
   }
-
-  return data as T;
 }
 
 export const api = {

@@ -546,4 +546,4 @@ class Database {
 export const db = new Database();
 
 // Re-export getDbStatus so server.ts doesn't need a direct src/ import
-export { getDbStatus } from '../src/db/index.ts';
+export { getDbStatus } from './db/index.ts';

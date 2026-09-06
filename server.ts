@@ -1,11 +1,14 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 
 import authRoutes from './server/routes/authRoutes.js';
 import pizzaRoutes from './server/routes/pizzaRoutes.js';
 import orderRoutes from './server/routes/orderRoutes.js';
 import paymentRoutes from './server/routes/paymentRoutes.js';
 import adminRoutes from './server/routes/adminRoutes.js';
+import architectureRoutes from './server/routes/architectureRoutes.js';
 
 import { initSeedUsers, comparePassword, generateToken } from './server/auth.js';
 import { startInventoryCron } from './server/inventory.js';
@@ -14,12 +17,25 @@ import { db, getDbStatus } from './server/db.js';
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
-// Allowed origins: local dev + deployed Vercel frontend
+// Normalized allowed origins: local dev + deployed Vercel frontend + cloud environments
+const rawFrontendUrl = (process.env.FRONTEND_URL || '').trim().replace(/\/+$/, '');
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.FRONTEND_URL,
+  'https://pizzadeliveryapp.vercel.app',
+  rawFrontendUrl,
 ].filter(Boolean) as string[];
+
+function isOriginAllowed(origin: string): boolean {
+  const normalized = origin.replace(/\/+$/, '');
+  if (allowedOrigins.includes(normalized)) return true;
+  if (normalized.endsWith('.vercel.app')) return true;
+  if (normalized.endsWith('.run.app')) return true;
+  if (normalized.endsWith('.onrender.com')) return true;
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(normalized)) return true;
+  if (process.env.NODE_ENV !== 'production') return true;
+  return false;
+}
 
 async function startServer() {
   // Initialize seed users (Admin & demo customer)
@@ -31,17 +47,20 @@ async function startServer() {
   const app = express();
 
   // -------------------------------------------------------------------------
-  // CORS — allow Vercel frontend and local dev
+  // CORS — allow Vercel frontend, Google AI Studio / Cloud Run, Render, and local dev
   // -------------------------------------------------------------------------
   app.use(
     cors({
       origin: (origin, callback) => {
-        // Allow requests with no origin (mobile apps, curl, Render health checks)
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) return callback(null, true);
-        callback(new Error(`CORS: Origin '${origin}' not allowed`));
+        // Allow requests with no origin (mobile apps, curl, Render health checks, same-origin)
+        if (!origin || isOriginAllowed(origin)) {
+          return callback(null, true);
+        }
+        return callback(null, false);
       },
       credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     })
   );
 
@@ -90,6 +109,7 @@ async function startServer() {
   app.use('/api/pizzas', pizzaRoutes);
   app.use('/api/orders', orderRoutes);
   app.use('/api/payments', paymentRoutes);
+  app.use('/api/architecture', architectureRoutes);
 
   // -------------------------------------------------------------------------
   // Admin Operations — RBAC enforced at route middleware level
@@ -176,6 +196,30 @@ async function startServer() {
 
   // Mount Admin Operations Routes
   app.use('/api/admin', adminRoutes);
+
+  // -------------------------------------------------------------------------
+  // Vite Middleware (Local Dev) & Static Client Serving (when dist exists)
+  // -------------------------------------------------------------------------
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const { createServer: createViteServer } = await import('vite');
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: 'spa',
+      });
+      app.use(vite.middlewares);
+    } catch (e: any) {
+      console.warn('[Vite Middleware] Dev server running in API-only mode:', e?.message);
+    }
+  } else {
+    const distPath = path.join(process.cwd(), 'dist');
+    if (fs.existsSync(path.join(distPath, 'index.html'))) {
+      app.use(express.static(distPath));
+      app.get('*all', (_req, res) => {
+        res.sendFile(path.join(distPath, 'index.html'));
+      });
+    }
+  }
 
   // -------------------------------------------------------------------------
   // Start Server

@@ -74,13 +74,21 @@ function MainApp() {
   }, [cartItems]);
 
   // Load menu from backend
-  const loadMenu = async () => {
+  const loadMenu = async (retryCount = 0) => {
     try {
       setMenuLoading(true);
       const res = await api.getPizzas();
-      setPizzas(res.pizzas);
+      if (res && res.pizzas && Array.isArray(res.pizzas)) {
+        setPizzas(res.pizzas);
+      }
     } catch (err) {
       console.error('Failed to load menu pizzas:', err);
+      // Auto-retry once after 2 seconds if first attempt failed
+      if (retryCount === 0) {
+        setTimeout(() => {
+          loadMenu(1);
+        }, 2000);
+      }
     } finally {
       setMenuLoading(false);
     }
@@ -103,6 +111,7 @@ function MainApp() {
 
   useEffect(() => {
     loadMenu();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
