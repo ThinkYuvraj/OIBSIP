@@ -12,6 +12,7 @@ A production-grade, full-stack Neapolitan pizza delivery platform and automated 
 ### Backend API
 🔗 https://slice-and-fire-backend.onrender.com/
 
+# Blog: https://medium.com/@thinkyuvraj/from-idea-to-application-my-oibsip-journey-building-a-full-stack-pizza-delivery-app-74395d97d81d
 ---
 
 ## 📋 Table of Contents
